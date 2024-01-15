@@ -1,2 +1,0 @@
-    Size	Average     	Std.Dev.	T        	 Region   	ROI name   	L/R/B	Study     	Image	Max Value	Max Loc	Min Value	Min Loc
-    1770	       1	       0	     Inf	 sROI_MNI_V4 	Insula_R 	B	Preprocessed august 2023	Insula_r	       1	1770 vox with max	       1	1770 vox with min
