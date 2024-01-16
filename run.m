@@ -15,10 +15,9 @@ extractLabels
 %% Run over all subjects
 
 % cd ..
-subjects = ["998","1092","1093","1171","1271","1352","1511","1603","1629"];
+subjects = ["303","378","797","820","998","1092","1093","1171","1271","1352","1511","1603","1629"];
 
-for i = 1:length(subjects)
-    
+for i = 1:length(subjects) 
     subject = subjects(i);
     %{
     %% Extraction
@@ -54,10 +53,12 @@ for i = 1:length(subjects)
     optionCombination = 'SA'; % Or 'WA'
 
     cd ..
+    
     cd combination\
     combining(optionCombination,subject);
-    %}
 
+    cd ..
+    %}
     %% Graph Learning
 
     windowSize = 8;
@@ -66,11 +67,10 @@ for i = 1:length(subjects)
 
     alpha_smoothness = 4; % For smoothness based learning
     beta_smoothness = 10; % For smoothness based learning
-    iter_smoothness = 25; % For smoothness based learning
+    iter_smoothness = 20; % For smoothness based learning
 
     lambda_sparsity = 2.5; % For sparsity based learning
 
-    % cd ..
     cd graph_learning\
     
     %{
