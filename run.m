@@ -19,7 +19,7 @@ subjects = ["303","378","797","820","998","1092","1093","1171","1271","1352","15
 
 for i = 1:length(subjects) 
     subject = subjects(i);
-    %{
+    
     %% Extraction
 
     cd extract_data\
@@ -58,7 +58,7 @@ for i = 1:length(subjects)
     combining(optionCombination,subject);
 
     cd ..
-    %}
+    %{
     %% Graph Learning
 
     windowSize = 8;
@@ -87,6 +87,7 @@ for i = 1:length(subjects)
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
     
     cd ..
+    %}
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

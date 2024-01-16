@@ -64,8 +64,8 @@ node = load("..\extract_data\nodeLabels.mat").nodes;
 
 %% Important Regions
 
-R1 = "R13R";
-R2 = "R44R";
+R1 = "Insula_L"; % Change this
+R2 = "Insula_L"; % Change this
 
 N = size(Sim375);
 N = N(3);

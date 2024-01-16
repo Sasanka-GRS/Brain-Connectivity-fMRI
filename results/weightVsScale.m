@@ -29,8 +29,8 @@ end
 
 %% Important Regions
 
-R1 = "R13R";
-R2 = "R44R";
+R1 = "R13R"; % Change this
+R2 = "R44R"; % Change this
 
 N = size(Sim375);
 N = N(3);

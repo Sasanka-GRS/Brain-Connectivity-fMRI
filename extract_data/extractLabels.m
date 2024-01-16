@@ -1,20 +1,23 @@
 %% Load region locations file
 
-LOC = load("RegionLocations.mat").LOC;
+masks = load("..\data\MNI_allMasks.mat");
 
 %% Extract labels for regions
 
-fNames = fieldnames(LOC);
-L = length(fieldnames(LOC));
+fNames = fieldnames(masks);
+L = length(fieldnames(masks));
 
 nodes = [];
 
 for i = 1:L
-    Ri = string(fNames{i});
-    RiLeft = Ri+"L";
-    RiRight = Ri+"R";
-    nodes = [nodes,RiRight];
-    nodes = [nodes,RiLeft];
+    Ri = fNames{i};
+    chr = convertStringsToChars(Ri);
+    if(chr(end)=='l')
+        chr(end) = 'L';
+    elseif(chr(end)=='r')
+        chr(end) = 'R';
+    end
+    nodes = [nodes,string(chr)];
 end
 
 %% Save layout
