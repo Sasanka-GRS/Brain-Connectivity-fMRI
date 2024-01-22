@@ -20,6 +20,7 @@ subjects = ["386"];
 for i = 1:length(subjects) 
     subject = subjects(i);
     
+    %{
     %% Extraction
 
     cd extract_data\
@@ -58,7 +59,7 @@ for i = 1:length(subjects)
     combining(optionCombination,subject);
 
     cd ..
-    
+    %}
     %% Graph Learning
 
     windowSize = 8;
