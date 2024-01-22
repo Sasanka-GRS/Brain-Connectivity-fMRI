@@ -15,7 +15,7 @@ extractLabels
 %% Run over all subjects
 
 % cd ..
-subjects = ["303","378","797","820","998","1092","1093","1171","1271","1352","1511","1603","1629"];
+subjects = ["386"];
 
 for i = 1:length(subjects) 
     subject = subjects(i);
@@ -58,7 +58,7 @@ for i = 1:length(subjects)
     combining(optionCombination,subject);
 
     cd ..
-    %{
+    
     %% Graph Learning
 
     windowSize = 8;
@@ -79,15 +79,15 @@ for i = 1:length(subjects)
     
     optionLearning = 'PE';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
-    
+    %}
     optionLearning = 'SP';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
-    %}
+    
     optionLearning = 'SM';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
     
     cd ..
-    %}
+    
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
