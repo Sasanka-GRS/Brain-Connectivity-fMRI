@@ -1,8 +1,8 @@
 %% Extract Data
 
 Data303 = load("..\combination\combined_data\303_data_combined.mat").data;
-Data375 = load("..\combination\combined_data\375_data_combined.mat").data;
 Data378 = load("..\combination\combined_data\378_data_combined.mat").data;
+Data386 = load("..\combination\combined_data\386_data_combined.mat").data;
 Data797 = load("..\combination\combined_data\797_data_combined.mat").data;
 Data820 = load("..\combination\combined_data\820_data_combined.mat").data;
 
@@ -23,15 +23,15 @@ ylabel('Scale','FontSize',40)
 title('Scale vs Time','FontSize',40)
 xlim([0,512])
 tightfig
-%legend('303','375','378','797','820','FontSize',25)
+%legend('303','378','386','797','820','FontSize',25)
 fontsize(f,20,"points")
-print('scale','-dpdf','-fillpage')
+%print('scale','-dpdf','-fillpage')
 
 %% Important Region
 
-R1 = "R13R"; % Change this
+R1 = "insula_L";
 
-N = size(Data375);
+N = size(Data378);
 N = N(1);
 
 time = 1:2:2*N;
@@ -43,8 +43,8 @@ indexR1 = find(node==R1);
 %% Extracting time series
 
 Signal303 = squeeze(Data303(:,indexR1));
-Signal375 = squeeze(Data375(:,indexR1));
 Signal378 = squeeze(Data378(:,indexR1));
+Signal386 = squeeze(Data386(:,indexR1));
 Signal797 = squeeze(Data797(:,indexR1));
 Signal820 = squeeze(Data820(:,indexR1));
 
@@ -54,16 +54,16 @@ f = figure;
 f.Position = [0 0 900 800];
 scatter(scaleD,Signal303,30,'o','filled');
 hold on
-scatter(scaleD,Signal375,30,'o','filled');
 scatter(scaleD,Signal378,30,'o','filled');
+scatter(scaleD,Signal386,30,'o','filled');
 scatter(scaleD,Signal797,30,'o','filled');
 scatter(scaleD,Signal820,30,'o','filled');
 hold off
 xlabel('Scale','FontSize',40)
 ylabel('BOLD','FontSize',40)
-legend('303','375','378','797','820','FontSize',25)
+legend('303','378','386','797','820','FontSize',25)
 fontsize(f,20,"points")
-print('scatter','-dpdf','-fillpage')
+%print('scatter','-dpdf','-fillpage')
 
 %% Quantize Samples to precision 0.03
 
@@ -96,14 +96,14 @@ scaleUnique = sort(unique(scaleDNew));
 L = length(scaleUnique);
 
 bold303 = [];
-bold375 = [];
 bold378 = [];
+bold386 = [];
 bold797 = [];
 bold820 = [];
 
 groups303 = [];
-groups375 = [];
 groups378 = [];
+groups386 = [];
 groups797 = [];
 groups820 = [];
 
@@ -115,15 +115,15 @@ for i = 1:L
     bold303 = [bold303;bold303Here];
     groups303 = [groups303;scaleHere*ones(L1,1)];
 
-    bold375Here = Signal375(scaleDNew==scaleHere);
-    L1 = length(bold375Here);
-    bold375 = [bold375;bold375Here];
-    groups375 = [groups375;scaleHere*ones(L1,1)];
-
     bold378Here = Signal378(scaleDNew==scaleHere);
     L1 = length(bold378Here);
     bold378 = [bold378;bold378Here];
     groups378 = [groups378;scaleHere*ones(L1,1)];
+
+    bold386Here = Signal386(scaleDNew==scaleHere);
+    L1 = length(bold386Here);
+    bold386 = [bold386;bold386Here];
+    groups386 = [groups386;scaleHere*ones(L1,1)];
 
     bold797Here = Signal797(scaleDNew==scaleHere);
     L1 = length(bold797Here);
@@ -147,18 +147,18 @@ xL=xlim;
 yL=ylim;
 text(0.99*xL(2),0.99*yL(2),'303','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 nexttile
-boxplot(bold375,groups375);
-xticklabels('')
-xL=xlim;
-yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'375','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
-nexttile
 boxplot(bold378,groups378);
-ylabel('BOLD','FontSize',15)
 xticklabels('')
 xL=xlim;
 yL=ylim;
 text(0.99*xL(2),0.99*yL(2),'378','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
+nexttile
+boxplot(bold386,groups386);
+ylabel('BOLD','FontSize',15)
+xticklabels('')
+xL=xlim;
+yL=ylim;
+text(0.99*xL(2),0.99*yL(2),'386','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 nexttile
 boxplot(bold797,groups797);
 xticklabels('')
@@ -173,4 +173,4 @@ yL=ylim;
 text(0.99*xL(2),0.99*yL(2),'820','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 fontsize(fig,20,"points")
 tightfig
-print('boxplot','-dpdf','-bestfit')
+%print('boxplot','-dpdf','-bestfit')

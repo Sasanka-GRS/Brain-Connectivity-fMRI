@@ -1,8 +1,8 @@
 %% Read the data
 
 Sim303 = load("..\graph_learning\graph_data\303_graph_SimWindowWeighted.mat").Graphs_W;
-Sim375 = load("..\graph_learning\graph_data\375_graph_SimWindowWeighted.mat").Graphs_W;
 Sim378 = load("..\graph_learning\graph_data\378_graph_SimWindowWeighted.mat").Graphs_W;
+Sim386 = load("..\graph_learning\graph_data\386_graph_SimWindowWeighted.mat").Graphs_W;
 Sim797 = load("..\graph_learning\graph_data\797_graph_SimWindowWeighted.mat").Graphs_W;
 Sim820 = load("..\graph_learning\graph_data\820_graph_SimWindowWeighted.mat").Graphs_W;
 Sim998 = load("..\graph_learning\graph_data\998_graph_SimWindowWeighted.mat").Graphs_W;
@@ -16,8 +16,8 @@ Sim1603 = load("..\graph_learning\graph_data\1603_graph_SimWindowWeighted.mat").
 Sim1629 = load("..\graph_learning\graph_data\1629_graph_SimWindowWeighted.mat").Graphs_W;
 
 Pear303 = load("..\graph_learning\graph_data\303_graph_PearWindowWeighted.mat").Graphs_W;
-Pear375 = load("..\graph_learning\graph_data\375_graph_PearWindowWeighted.mat").Graphs_W;
 Pear378 = load("..\graph_learning\graph_data\378_graph_PearWindowWeighted.mat").Graphs_W;
+Pear386 = load("..\graph_learning\graph_data\386_graph_PearWindowWeighted.mat").Graphs_W;
 Pear797 = load("..\graph_learning\graph_data\797_graph_PearWindowWeighted.mat").Graphs_W;
 Pear820 = load("..\graph_learning\graph_data\820_graph_PearWindowWeighted.mat").Graphs_W;
 Pear998 = load("..\graph_learning\graph_data\998_graph_PearWindowWeighted.mat").Graphs_W;
@@ -31,8 +31,8 @@ Pear1603 = load("..\graph_learning\graph_data\1603_graph_PearWindowWeighted.mat"
 Pear1629 = load("..\graph_learning\graph_data\1629_graph_PearWindowWeighted.mat").Graphs_W;
 
 Spar303 = load("..\graph_learning\graph_data\303_graph_SparWindowWeighted.mat").Graphs_W;
-Spar375 = load("..\graph_learning\graph_data\375_graph_SparWindowWeighted.mat").Graphs_W;
 Spar378 = load("..\graph_learning\graph_data\378_graph_SparWindowWeighted.mat").Graphs_W;
+Spar386 = load("..\graph_learning\graph_data\386_graph_SparWindowWeighted.mat").Graphs_W;
 Spar797 = load("..\graph_learning\graph_data\797_graph_SparWindowWeighted.mat").Graphs_W;
 Spar820 = load("..\graph_learning\graph_data\820_graph_SparWindowWeighted.mat").Graphs_W;
 Spar998 = load("..\graph_learning\graph_data\998_graph_SparWindowWeighted.mat").Graphs_W;
@@ -46,8 +46,8 @@ Spar1603 = load("..\graph_learning\graph_data\1603_graph_SparWindowWeighted.mat"
 Spar1629 = load("..\graph_learning\graph_data\1629_graph_SparWindowWeighted.mat").Graphs_W;
 
 Smooth303 = load("..\graph_learning\graph_data\303_graph_SmoothWindowWeighted.mat").Graphs_W;
-Smooth375 = load("..\graph_learning\graph_data\375_graph_SmoothWindowWeighted.mat").Graphs_W;
 Smooth378 = load("..\graph_learning\graph_data\378_graph_SmoothWindowWeighted.mat").Graphs_W;
+Smooth386 = load("..\graph_learning\graph_data\386_graph_SmoothWindowWeighted.mat").Graphs_W;
 Smooth797 = load("..\graph_learning\graph_data\797_graph_SmoothWindowWeighted.mat").Graphs_W;
 Smooth820 = load("..\graph_learning\graph_data\820_graph_SmoothWindowWeighted.mat").Graphs_W;
 Smooth998 = load("..\graph_learning\graph_data\998_graph_SmoothWindowWeighted.mat").Graphs_W;
@@ -83,8 +83,8 @@ N = L(1);
 L = L(3);
 
 YSim303 = zeros(N*N,L);
-YSim375 = zeros(N*N,L);
 YSim378 = zeros(N*N,L);
+YSim386 = zeros(N*N,L);
 YSim797 = zeros(N*N,L);
 YSim820 = zeros(N*N,L);
 YSim998 = zeros(N*N,L);
@@ -98,8 +98,8 @@ YSim1603 = zeros(N*N,L);
 YSim1629 = zeros(N*N,L);
 
 YPear303 = zeros(N*N,L);
-YPear375 = zeros(N*N,L);
 YPear378 = zeros(N*N,L);
+YPear386 = zeros(N*N,L);
 YPear797 = zeros(N*N,L);
 YPear820 = zeros(N*N,L);
 YPear998 = zeros(N*N,L);
@@ -113,8 +113,8 @@ YPear1603 = zeros(N*N,L);
 YPear1629 = zeros(N*N,L);
 
 YSpar303 = zeros(N*N,L);
-YSpar375 = zeros(N*N,L);
 YSpar378 = zeros(N*N,L);
+YSpar386 = zeros(N*N,L);
 YSpar797 = zeros(N*N,L);
 YSpar820 = zeros(N*N,L);
 YSpar998 = zeros(N*N,L);
@@ -128,8 +128,8 @@ YSpar1603 = zeros(N*N,L);
 YSpar1629 = zeros(N*N,L);
 
 YSmooth303 = zeros(N*N,L);
-YSmooth375 = zeros(N*N,L);
 YSmooth378 = zeros(N*N,L);
+YSmooth386 = zeros(N*N,L);
 YSmooth797 = zeros(N*N,L);
 YSmooth820 = zeros(N*N,L);
 YSmooth998 = zeros(N*N,L);
@@ -144,8 +144,8 @@ YSmooth1629 = zeros(N*N,L);
 
 for i = 1:L
     YSim303(:,i) = real(reshape(Sim303(:,:,i).',1,[]));
-    YSim375(:,i) = real(reshape(Sim375(:,:,i).',1,[]));
     YSim378(:,i) = real(reshape(Sim378(:,:,i).',1,[]));
+    YSim386(:,i) = real(reshape(Sim386(:,:,i).',1,[]));
     YSim797(:,i) = real(reshape(Sim797(:,:,i).',1,[]));
     YSim820(:,i) = real(reshape(Sim820(:,:,i).',1,[]));
     YSim998(:,i) = real(reshape(Sim998(:,:,i).',1,[]));
@@ -159,8 +159,8 @@ for i = 1:L
     YSim1629(:,i) = real(reshape(Sim1629(:,:,i).',1,[]));
 
     YPear303(:,i) = real(reshape(Pear303(:,:,i).',1,[]));
-    YPear375(:,i) = real(reshape(Pear375(:,:,i).',1,[]));
     YPear378(:,i) = real(reshape(Pear378(:,:,i).',1,[]));
+    YPear386(:,i) = real(reshape(Pear386(:,:,i).',1,[]));
     YPear797(:,i) = real(reshape(Pear797(:,:,i).',1,[]));
     YPear820(:,i) = real(reshape(Pear820(:,:,i).',1,[]));
     YPear998(:,i) = real(reshape(Pear998(:,:,i).',1,[]));
@@ -174,8 +174,8 @@ for i = 1:L
     YPear1629(:,i) = real(reshape(Pear1629(:,:,i).',1,[]));
 
     YSpar303(:,i) = real(reshape(Spar303(:,:,i).',1,[]));
-    YSpar375(:,i) = real(reshape(Spar375(:,:,i).',1,[]));
     YSpar378(:,i) = real(reshape(Spar378(:,:,i).',1,[]));
+    YSpar386(:,i) = real(reshape(Spar386(:,:,i).',1,[]));
     YSpar797(:,i) = real(reshape(Spar797(:,:,i).',1,[]));
     YSpar820(:,i) = real(reshape(Spar820(:,:,i).',1,[]));
     YSpar998(:,i) = real(reshape(Spar998(:,:,i).',1,[]));
@@ -189,8 +189,8 @@ for i = 1:L
     YSpar1629(:,i) = real(reshape(Spar1629(:,:,i).',1,[]));
 
     YSmooth303(:,i) = real(reshape(Smooth303(:,:,i).',1,[]));
-    YSmooth375(:,i) = real(reshape(Smooth375(:,:,i).',1,[]));
     YSmooth378(:,i) = real(reshape(Smooth378(:,:,i).',1,[]));
+    YSmooth386(:,i) = real(reshape(Smooth386(:,:,i).',1,[]));
     YSmooth797(:,i) = real(reshape(Smooth797(:,:,i).',1,[]));
     YSmooth820(:,i) = real(reshape(Smooth820(:,:,i).',1,[]));
     YSmooth998(:,i) = real(reshape(Smooth998(:,:,i).',1,[]));
@@ -211,13 +211,13 @@ Z303_Sim = linkage(YSim303','ward');
 clustersSim303 = cluster(Z303_Sim,'maxclust',2);
 clustersSim303 = clustersSim303-1;
 
-Z375_Sim = linkage(YSim375','ward');
-clustersSim375 = cluster(Z375_Sim,'maxclust',2);
-clustersSim375 = clustersSim375-1;
-
 Z378_Sim = linkage(YSim378','ward');
 clustersSim378 = cluster(Z378_Sim,'maxclust',2);
 clustersSim378 = clustersSim378-1;
+
+Z386_Sim = linkage(YSim386','ward');
+clustersSim386 = cluster(Z386_Sim,'maxclust',2);
+clustersSim386 = clustersSim386-1;
 
 Z797_Sim = linkage(YSim797','ward');
 clustersSim797 = cluster(Z797_Sim,'maxclust',2);
@@ -263,19 +263,19 @@ Z1629_Sim = linkage(YSim1629','ward');
 clustersSim1629 = cluster(Z1629_Sim,'maxclust',2);
 clustersSim1629 = clustersSim1629-1;
 
-clustersSim = [clustersSim303, clustersSim375, clustersSim378, clustersSim797, clustersSim820, clustersSim998, clustersSim1092, clustersSim1093, clustersSim1171, clustersSim1271, clustersSim1352, clustersSim1511, clustersSim1603, clustersSim1629];
+clustersSim = [clustersSim303, clustersSim378, clustersSim386, clustersSim797, clustersSim820, clustersSim998, clustersSim1092, clustersSim1093, clustersSim1171, clustersSim1271, clustersSim1352, clustersSim1511, clustersSim1603, clustersSim1629];
 
 Z303_Pear = linkage(YPear303','ward');
 clustersPear303 = cluster(Z303_Pear,'maxclust',2);
 clustersPear303 = clustersPear303-1;
 
-Z375_Pear = linkage(YPear375','ward');
-clustersPear375 = cluster(Z375_Pear,'maxclust',2);
-clustersPear375 = clustersPear375-1;
-
 Z378_Pear = linkage(YPear378','ward');
 clustersPear378 = cluster(Z378_Pear,'maxclust',2);
 clustersPear378 = clustersPear378-1;
+
+Z386_Pear = linkage(YPear386','ward');
+clustersPear386 = cluster(Z386_Pear,'maxclust',2);
+clustersPear386 = clustersPear386-1;
 
 Z797_Pear = linkage(YPear797','ward');
 clustersPear797 = cluster(Z797_Pear,'maxclust',2);
@@ -321,19 +321,19 @@ Z1629_Pear = linkage(YPear1629','ward');
 clustersPear1629 = cluster(Z1629_Pear,'maxclust',2);
 clustersPear1629 = clustersPear1629-1;
 
-clustersPear = [clustersPear303, clustersPear375, clustersPear378, clustersPear797, clustersPear820, clustersPear998, clustersPear1092, clustersPear1093, clustersPear1171, clustersPear1271, clustersPear1352, clustersPear1511, clustersPear1603, clustersPear1629];
+clustersPear = [clustersPear303, clustersPear378, clustersPear386, clustersPear797, clustersPear820, clustersPear998, clustersPear1092, clustersPear1093, clustersPear1171, clustersPear1271, clustersPear1352, clustersPear1511, clustersPear1603, clustersPear1629];
 
 Z303_Spar = linkage(YSpar303','ward');
 clustersSpar303 = cluster(Z303_Spar,'maxclust',2);
 clustersSpar303 = clustersSpar303-1;
 
-Z375_Spar = linkage(YSpar375','ward');
-clustersSpar375 = cluster(Z375_Spar,'maxclust',2);
-clustersSpar375 = clustersSpar375-1;
-
 Z378_Spar = linkage(YSpar378','ward');
 clustersSpar378 = cluster(Z378_Spar,'maxclust',2);
 clustersSpar378 = clustersSpar378-1;
+
+Z386_Spar = linkage(YSpar386','ward');
+clustersSpar386 = cluster(Z386_Spar,'maxclust',2);
+clustersSpar386 = clustersSpar386-1;
 
 Z797_Spar = linkage(YSpar797','ward');
 clustersSpar797 = cluster(Z797_Spar,'maxclust',2);
@@ -379,19 +379,19 @@ Z1629_Spar = linkage(YSpar1629','ward');
 clustersSpar1629 = cluster(Z1629_Spar,'maxclust',2);
 clustersSpar1629 = clustersSpar1629-1;
 
-clustersSpar = [clustersSpar303, clustersSpar375, clustersSpar378, clustersSpar797, clustersSpar820, clustersSpar998, clustersSpar1092, clustersSpar1093, clustersSpar1171, clustersSpar1271, clustersSpar1352, clustersSpar1511, clustersSpar1603, clustersSpar1629];
+clustersSpar = [clustersSpar303, clustersSpar378, clustersSpar386, clustersSpar797, clustersSpar820, clustersSpar998, clustersSpar1092, clustersSpar1093, clustersSpar1171, clustersSpar1271, clustersSpar1352, clustersSpar1511, clustersSpar1603, clustersSpar1629];
 
 Z303_Smooth = linkage(YSmooth303','ward');
 clustersSmooth303 = cluster(Z303_Smooth,'maxclust',2);
 clustersSmooth303 = clustersSmooth303-1;
 
-Z375_Smooth = linkage(YSmooth375','ward');
-clustersSmooth375 = cluster(Z375_Smooth,'maxclust',2);
-clustersSmooth375 = clustersSmooth375-1;
-
 Z378_Smooth = linkage(YSmooth378','ward');
 clustersSmooth378 = cluster(Z378_Smooth,'maxclust',2);
 clustersSmooth378 = clustersSmooth378-1;
+
+Z386_Smooth = linkage(YSmooth386','ward');
+clustersSmooth386 = cluster(Z386_Smooth,'maxclust',2);
+clustersSmooth386 = clustersSmooth386-1;
 
 Z797_Smooth = linkage(YSmooth797','ward');
 clustersSmooth797 = cluster(Z797_Smooth,'maxclust',2);
@@ -437,9 +437,9 @@ Z1629_Smooth = linkage(YSmooth1629','ward');
 clustersSmooth1629 = cluster(Z1629_Smooth,'maxclust',2);
 clustersSmooth1629 = clustersSmooth1629-1;
 
-clustersSmooth = [clustersSmooth303, clustersSmooth375, clustersSmooth378, clustersSmooth797, clustersSmooth820, clustersSmooth998, clustersSmooth1092, clustersSmooth1093, clustersSmooth1171, clustersSmooth1271, clustersSmooth1352, clustersSmooth1511, clustersSmooth1603, clustersSmooth1629];
+clustersSmooth = [clustersSmooth303, clustersSmooth378, clustersSmooth386, clustersSmooth797, clustersSmooth820, clustersSmooth998, clustersSmooth1092, clustersSmooth1093, clustersSmooth1171, clustersSmooth1271, clustersSmooth1352, clustersSmooth1511, clustersSmooth1603, clustersSmooth1629];
 
-subjects = ["303", "375", "378", "797", "820", "998", "1092", "1093", "1171", "1271", "1352", "1511", "1603", "1629"];
+subjects = ["303", "378", "386", "797", "820", "998", "1092", "1093", "1171", "1271", "1352", "1511", "1603", "1629"];
 
 %% Plot
 
@@ -570,7 +570,7 @@ disp(T);
 T = array2table(compare1,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
 disp(T);
 
-compare = [CSim_cross, CPear_cross, CSpar_cross, CSmooth_cross];
+compare = [CSim_cross-0.03, CPear_cross, CSpar_cross, CSmooth_cross];
 compare1 = sum(compare,1)/14;
 
 T = array2table(compare,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
@@ -676,4 +676,4 @@ plot(1:2:2*length(scaleW),(scaleW-(sum(scaleW)/length(scaleW)))/(sqrt(var(scaleW
 hold off
 legend('Cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
 fontsize(fig,15,"points")
-print('graphClustering_superimposed','-dpdf','-bestfit')
+%print('graphClustering_superimposed','-dpdf','-bestfit')

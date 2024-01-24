@@ -14,7 +14,7 @@ for last = Num:L
     X = XData(:,last-Num+1:last);
     L_est = zeros(N,N);
 
-    W = smoothWindowInside(iter,L_est,alpha,beta,X);
+    W = smoothWindowInside(iter,alpha,beta,X);
     
     Graphs_W = [Graphs_W,W];
 

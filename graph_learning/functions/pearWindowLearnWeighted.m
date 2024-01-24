@@ -18,6 +18,12 @@ while(last <= L)
     
     W = corrcoef(X');
 
+    %% Set diagonals to zeros
+
+    W = W - eye(N);
+
+    W = abs(W);
+
     W = normAdj(W);
     
     Graphs_W(:,:,start) = W;

@@ -1,4 +1,4 @@
-function W = smoothWindowInside(iter,L_est,alpha,beta,X)
+function W = smoothWindowInside(iter,alpha,beta,X)
 
 S = size(X);
 N = S(1);
@@ -33,7 +33,7 @@ end
 
 %% Find W from L
 
-W = diag(diag(L_hat))-L_est;
+W = diag(diag(L_hat)) - L_hat;
 W = normAdj(W);
 
 end

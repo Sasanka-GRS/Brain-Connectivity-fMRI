@@ -5,10 +5,10 @@ clear
 addpath(".\functions\");
 
 %% Load data
-GraphsSim = load("..\graph_learning\graph_data\378_graph_SimWindowWeighted.mat");
-GraphsSmooth = load("..\graph_learning\graph_data\378_graph_SmoothWindowWeighted.mat");
-GraphsSpar = load("..\graph_learning\graph_data\378_graph_SparWindowWeighted.mat");
-GraphsPear = load("..\graph_learning\graph_data\378_graph_PearWindowWeighted.mat");
+GraphsSim = load("..\graph_learning\graph_data\303_graph_SimWindowWeighted.mat");
+GraphsSmooth = load("..\graph_learning\graph_data\303_graph_SmoothWindowWeighted.mat");
+GraphsSpar = load("..\graph_learning\graph_data\303_graph_SparWindowWeighted.mat");
+GraphsPear = load("..\graph_learning\graph_data\303_graph_PearWindowWeighted.mat");
 
 node = load("..\extract_data\nodeLabels.mat").nodes;
 layout = load("..\extract_data\nodeLayouts.mat").locs;
