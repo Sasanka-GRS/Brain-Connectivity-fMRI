@@ -14,14 +14,11 @@ for i = 1:L-1
 
     bFIRLS = LSHPF(wstop, wpass);
     bFIREQ = EqHPF(wstop, wpass);
-
-    aFIRLS = 1;
-    aFIREQ = 1;
     
     for k = 1:l(2)
         x1 = xi(:,k);
-        yiFIRLS(:,k) = filter(bFIRLS,aFIRLS,x1);
-        yiFIREQ(:,k) = filter(bFIREQ,aFIREQ,x1);
+        yiFIRLS(:,k) = conv(x1,bFIRLS,'same');
+        yiFIREQ(:,k) = conv(x1,bFIREQ,'same');
     end
 
     yFIRLS.(fNames{i}) = yiFIRLS;

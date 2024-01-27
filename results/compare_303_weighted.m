@@ -24,28 +24,28 @@ N = N(1);
 
 %% Similarity
 A = W_Sim;
-[W,topSim] = thres1(A,N,3);
+[W,topSim] = thres1(A,N,5);
 W = normAdj(W);
 
 W_Sim = W;
 
 %% Smoothness
 A = W_Smooth;
-[W,topSmooth] = thres1(A,N,3);
+[W,topSmooth] = thres1(A,N,5);
 W = normAdj(W);
 
 W_Smooth = W;
 
 %% Sparsity
 A = W_Spar;
-[W,topSpar] = thres1(A,N,3);
+[W,topSpar] = thres1(A,N,5);
 W = normAdj(W);
 
 W_Spar = W;
 
 %% Pearson
 A = W_Pear;
-[W,topPear] = thres1(A,N,3);
+[W,topPear] = thres1(A,N,5);
 W = normAdj(W);
 
 W_Pear = W;

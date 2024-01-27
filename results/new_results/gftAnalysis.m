@@ -1,19 +1,6 @@
 clc
 clear
 
-%% Load data
-
-Sim303 = load("..\..\graph_learning\graph_data\303_graph_SimWindowWeighted.mat").Graphs_W;
-Spar303 = load("..\..\graph_learning\graph_data\303_graph_SparWindowWeighted.mat").Graphs_W;
-Pear303 = load("..\..\graph_learning\graph_data\303_graph_PearWindowWeighted.mat").Graphs_W;
-Smooth303 = load("..\..\graph_learning\graph_data\303_graph_SmoothWindowWeighted.mat").Graphs_W;
-
-Data303 = load("..\..\combination\combined_data\303_data_combined.mat").data;
-Data303 = Data303';
-
-node = load("..\..\extract_data\nodeLabels.mat").nodes;
-layout = load("..\..\extract_data\nodeLayouts.mat").locs;
-
 %% Set parameters
 
 windowSize = 8;
@@ -21,123 +8,172 @@ cutoff1 = 0;
 cutoff2 = 0;
 option = 'MED'; % 'MED' for choosing the middle value and 'AVG' for averaging the window
 
-S = size(Data303);
-N = S(1);
-T = S(2);
+node = load("..\..\extract_data\nodeLabels.mat").nodes;
+layout = load("..\..\extract_data\nodeLayouts.mat").locs;
 
-%% LPF
+%% Run loop for all subjects
 
-start = 1;
-last = windowSize;
+subjects = ["303","378","386","797","820","998","1092","1093","1171","1271","1352","1511","1603","1629"];
 
-LPFSim303 = [];
-LPFSpar303 = [];
-LPFPear303 = [];
-LPFSmooth303 = [];
+for i = 1:length(subjects)
+    subject = subjects(i);
+
+    %% Load data
+
+    s1 = "..\..\normalize_graphs\normalized_graphs\";
+    s2 = "_normalizedGraphs.mat";
+    sub = s1 + subject + s2;
+
+    graphOut = load(sub).graphOut;
+    SimSub = graphOut.Sim;
+    SparSub = graphOut.Spar;
+    PearSub = graphOut.Pear;
+    SmoothSub = graphOut.Smooth;
+
+    s1 = "..\..\combination\combined_data\";
+    s2 = "_data_combined.mat";
+    sub = s1 + subject + s2;
+
+    DataSub = load(sub).data;
+    DataSub = DataSub';
+
+    %% Set parameters
+
+    S = size(DataSub);
+    N = S(1);
+    T = S(2);
+
+    %% LPF
+
+    start = 1;
+    last = windowSize;
+
+    LPFSimSub = [];
+    LPFSparSub = [];
+    LPFPearSub = [];
+    LPFSmoothSub = [];
 
 
-cutoff1 = 0;
-cutoff2 = 9;
+    cutoff1 = 0;
+    cutoff2 = floor(N/3);
 
-while(last<=T)
-    LPFSim303 = [LPFSim303, graphSpectralFilter(Data303(:,start:last),Sim303(:,:,start),cutoff1,cutoff2,option)];
-    LPFSpar303 = [LPFSpar303, graphSpectralFilter(Data303(:,start:last),Spar303(:,:,start),cutoff1,cutoff2,option)];
-    LPFPear303 = [LPFPear303, graphSpectralFilter(Data303(:,start:last),Pear303(:,:,start),cutoff1,cutoff2,option)];
-    LPFSmooth303 = [LPFSmooth303, graphSpectralFilter(Data303(:,start:last),Smooth303(:,:,start),cutoff1,cutoff2,option)];
-    start = start + 1;
-    last = last + 1;
+    while(last<=T)
+        LPFSimSub = [LPFSimSub, graphSpectralFilter(DataSub(:,start:last),SimSub(:,:,start),cutoff1,cutoff2,option)];
+        LPFSparSub = [LPFSparSub, graphSpectralFilter(DataSub(:,start:last),SparSub(:,:,start),cutoff1,cutoff2,option)];
+        LPFPearSub = [LPFPearSub, graphSpectralFilter(DataSub(:,start:last),PearSub(:,:,start),cutoff1,cutoff2,option)];
+        LPFSmoothSub = [LPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
+        start = start + 1;
+        last = last + 1;
+    end
+
+    %% BPF
+
+    start = 1;
+    last = windowSize;
+
+    BPFSimSub = [];
+    BPFSparSub = [];
+    BPFPearSub = [];
+    BPFSmoothSub = [];
+
+    cutoff1 = floor(N/3)+1;
+    cutoff2 = 2*floor(N/3);
+
+    while(last<=T)
+        BPFSimSub = [BPFSimSub, graphSpectralFilter(DataSub(:,start:last),SimSub(:,:,start),cutoff1,cutoff2,option)];
+        BPFSparSub = [BPFSparSub, graphSpectralFilter(DataSub(:,start:last),SparSub(:,:,start),cutoff1,cutoff2,option)];
+        BPFPearSub = [BPFPearSub, graphSpectralFilter(DataSub(:,start:last),PearSub(:,:,start),cutoff1,cutoff2,option)];
+        BPFSmoothSub = [BPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
+        start = start + 1;
+        last = last + 1;
+    end
+
+    %% HPF
+
+    start = 1;
+    last = windowSize;
+
+    HPFSimSub = [];
+    HPFSparSub = [];
+    HPFPearSub = [];
+    HPFSmoothSub = [];
+
+    cutoff1 = 2*floor(N/3);
+    cutoff2 = N;
+
+    while(last<=T)
+        HPFSimSub = [HPFSimSub, graphSpectralFilter(DataSub(:,start:last),SimSub(:,:,start),cutoff1,cutoff2,option)];
+        HPFSparSub = [HPFSparSub, graphSpectralFilter(DataSub(:,start:last),SparSub(:,:,start),cutoff1,cutoff2,option)];
+        HPFPearSub = [HPFPearSub, graphSpectralFilter(DataSub(:,start:last),PearSub(:,:,start),cutoff1,cutoff2,option)];
+        HPFSmoothSub = [HPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
+        start = start + 1;
+        last = last + 1;
+    end
+
+    %% Save
+    
+    s1 = "gft\";
+    s2 = "_GFTFiltered.mat";
+    sub = s1 + subject + s2;
+
+    Sim.LPF = LPFSimSub;
+    Sim.BPF = BPFSimSub;
+    Sim.HPF = HPFSimSub;
+
+    Spar.LPF = LPFSparSub;
+    Spar.BPF = BPFSparSub;
+    Spar.HPF = HPFSparSub;
+
+    Pear.LPF = LPFPearSub;
+    Pear.BPF = BPFPearSub;
+    Pear.HPF = HPFPearSub;
+
+    Smooth.LPF = LPFSmoothSub;
+    Smooth.BPF = BPFSmoothSub;
+    Smooth.HPF = HPFSmoothSub;
+
+    save(sub,"Sim","Pear","Spar","Smooth");
 end
-
-%% BPF
-
-start = 1;
-last = windowSize;
-
-BPFSim303 = [];
-BPFSpar303 = [];
-BPFPear303 = [];
-BPFSmooth303 = [];
-
-cutoff1 = 10;
-cutoff2 = 18;
-
-while(last<=T)
-    BPFSim303 = [BPFSim303, graphSpectralFilter(Data303(:,start:last),Sim303(:,:,start),cutoff1,cutoff2,option)];
-    BPFSpar303 = [BPFSpar303, graphSpectralFilter(Data303(:,start:last),Spar303(:,:,start),cutoff1,cutoff2,option)];
-    BPFPear303 = [BPFPear303, graphSpectralFilter(Data303(:,start:last),Pear303(:,:,start),cutoff1,cutoff2,option)];
-    BPFSmooth303 = [BPFSmooth303, graphSpectralFilter(Data303(:,start:last),Smooth303(:,:,start),cutoff1,cutoff2,option)];
-    start = start + 1;
-    last = last + 1;
-end
-
-%% HPF
-
-start = 1;
-last = windowSize;
-
-HPFSim303 = [];
-HPFSpar303 = [];
-HPFPear303 = [];
-HPFSmooth303 = [];
-
-cutoff1 = 19;
-cutoff2 = 26;
-
-while(last<=T)
-    HPFSim303 = [HPFSim303, graphSpectralFilter(Data303(:,start:last),Sim303(:,:,start),cutoff1,cutoff2,option)];
-    HPFSpar303 = [HPFSpar303, graphSpectralFilter(Data303(:,start:last),Spar303(:,:,start),cutoff1,cutoff2,option)];
-    HPFPear303 = [HPFPear303, graphSpectralFilter(Data303(:,start:last),Pear303(:,:,start),cutoff1,cutoff2,option)];
-    HPFSmooth303 = [HPFSmooth303, graphSpectralFilter(Data303(:,start:last),Smooth303(:,:,start),cutoff1,cutoff2,option)];
-    start = start + 1;
-    last = last + 1;
-end
-
-%% Save
-%{
-save("gft\Sim303_Filtered.mat","LPFSim303","BPFSim303","HPFSim303");
-save("gft\Spar303_Filtered.mat","LPFSpar303","BPFSpar303","HPFSpar303");
-save("gft\Pear303_Filtered.mat","LPFPear303","BPFPear303","HPFPear303");
-save("gft\Smooth303_Filtered.mat","LPFSmooth303","BPFSmooth303","HPFSmooth303");
-%}
 
 %% Display
-
+%{
 figure()
 subplot(3,4,1)
-plotting_signal(layout,LPFSim303,node);
+plotting_signal(layout,LPFSimSub,node);
 title('Similarity LPF')
 subplot(3,4,2)
-plotting_signal(layout,LPFSpar303,node);
+plotting_signal(layout,LPFSparSub,node);
 title('Sparsity LPF')
 subplot(3,4,3)
-plotting_signal(layout,LPFPear303,node);
+plotting_signal(layout,LPFPearSub,node);
 title('Pearson LPF')
 subplot(3,4,4)
-plotting_signal(layout,LPFSmooth303,node);
+plotting_signal(layout,LPFSmoothSub,node);
 title('Smoothness LPF')
 
 subplot(3,4,5)
-plotting_signal(layout,BPFSim303,node);
+plotting_signal(layout,BPFSimSub,node);
 title('Similarity BPF')
 subplot(3,4,6)
-plotting_signal(layout,BPFSpar303,node);
+plotting_signal(layout,BPFSparSub,node);
 title('Sparsity BPF')
 subplot(3,4,7)
-plotting_signal(layout,BPFPear303,node);
+plotting_signal(layout,BPFPearSub,node);
 title('Pearson BPF')
 subplot(3,4,8)
-plotting_signal(layout,BPFSmooth303,node);
+plotting_signal(layout,BPFSmoothSub,node);
 title('Smoothness BPF')
 
 subplot(3,4,9)
-plotting_signal(layout,HPFSim303,node);
+plotting_signal(layout,HPFSimSub,node);
 title('Similarity HPF')
 subplot(3,4,10)
-plotting_signal(layout,HPFSpar303,node);
+plotting_signal(layout,HPFSparSub,node);
 title('Sparsity HPF')
 subplot(3,4,11)
-plotting_signal(layout,HPFPear303,node);
+plotting_signal(layout,HPFPearSub,node);
 title('Pearson HPF')
 subplot(3,4,12)
-plotting_signal(layout,HPFSmooth303,node);
+plotting_signal(layout,HPFSmoothSub,node);
 title('Smoothness HPF')
+%}

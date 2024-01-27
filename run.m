@@ -31,7 +31,7 @@ for i = 1:length(subjects)
     cd ..
     cd normalize_data\
     normalizeData(subject)
-
+    
     %% HPF
 
     optionHPF = 'LS'; % Or 'EQ'
@@ -49,7 +49,6 @@ for i = 1:length(subjects)
     cd clustering\
     clustering(option1Clustering,option2Clustering,subject);
     
-    %{
     %% Combination
 
     optionCombination = 'SA'; % Or 'WA'
@@ -60,7 +59,7 @@ for i = 1:length(subjects)
     combining(optionCombination,subject);
 
     cd ..
-    %}
+    
     %% Graph Learning
 
     windowSize = 8;
@@ -73,15 +72,14 @@ for i = 1:length(subjects)
 
     lambda_sparsity = 2.5; % For sparsity based learning
 
-    %cd graph_learning\
-    
-    %{
+    cd graph_learning\
+       
     optionLearning = 'SI';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
     
     optionLearning = 'PE';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
-    
+    %{
     optionLearning = 'SP';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
     
@@ -89,14 +87,14 @@ for i = 1:length(subjects)
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
     %}
     cd ..
-    %{
+    
     cd normalize_graphs\
     normalizeGraphs(subject);
     
     cd ..
-    %}
+    
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%cd ..
+
 clc
