@@ -1,11 +1,15 @@
-function plotting_signal(Layout,W,top,node,signal)
+function plotting_circle(W,top,node)
 
-N = size(Layout);
+N = size(W);
 N = N(1);
 
-scatter(Layout(:,1),Layout(:,2),40,signal,'o','filled'); % Plot nodes
+theta = 0:2*pi/N:2*pi*(N-1)/N;
+Layout = [5*cos(theta); 5*sin(theta)]';
+
+scatter(Layout(:,1),Layout(:,2),40,'o','filled'); % Plot nodes
 for i = 1:N
-    text(Layout(i,1)+1,Layout(i,2)+1,node(i),'FontSize',10);
+    %scatter(Layout(i,1),Layout(i,2),20,'o','filled');
+    text(Layout(i,1)+0.2,Layout(i,2)+0.2,node(i),'FontSize',10);
 end
 hold on
 
@@ -26,7 +30,5 @@ for i=1:N
 end
 
 hold off
-
-colorbar;
 
 end

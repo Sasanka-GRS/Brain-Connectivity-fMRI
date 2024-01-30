@@ -84,11 +84,11 @@ for S = 1:length(subjects)
 
     %% Iterate over time (4 scales)
 
-    w_lp = zeros(N,1);
-    w_1 = zeros(N,1);
-    w_2 = zeros(N,1);
-    w_3 = zeros(N,1);
-    w_4 = zeros(N,1);
+    w_lp = zeros(N,T_graphs);
+    w_1 = zeros(N,T_graphs);
+    w_2 = zeros(N,T_graphs);
+    w_3 = zeros(N,T_graphs);
+    w_4 = zeros(N,T_graphs);
 
     for m = 1:length(methods)
         method = methods(m);
@@ -115,11 +115,11 @@ for S = 1:length(subjects)
             %%%%%%%%%%%%%%%%%%% Apply forward transform %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             wpall = sgwt_cheby_op(DataSub(:,i-1+round(T_window/2)),L,c,arange);
-            w_lp = w_lp + wpall{1};
-            w_1 = w_1 + wpall{2};
-            w_2 = w_2 + wpall{3};
-            w_3 = w_3 + wpall{4};
-            w_4 = w_4 + wpall{5};
+            w_lp(:,i) = wpall{1};
+            w_1(:,i) = wpall{2};
+            w_2(:,i) = wpall{3};
+            w_3(:,i) = wpall{4};
+            w_4(:,i) = wpall{5};
 
         end
 
