@@ -25,7 +25,7 @@ Pear820 = load("..\graph_learning\graph_data\820_graph_PearWindowWeighted.mat").
 Spar820 = load("..\graph_learning\graph_data\820_graph_SparWindowWeighted.mat").Graphs_W;
 Smooth820 = load("..\graph_learning\graph_data\820_graph_SmoothWindowWeighted.mat").Graphs_W;
 
-node = load("..\extract_data\nodeLabels.mat").nodes;
+node = load("..\extract_data\nodeLabels.mat").numbers;
 
 %% Important Regions
 

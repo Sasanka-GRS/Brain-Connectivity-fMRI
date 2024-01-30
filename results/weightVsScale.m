@@ -10,7 +10,7 @@ Pear378 = load("..\graph_learning\graph_data\378_graph_PearWindowWeighted.mat").
 Spar378 = load("..\graph_learning\graph_data\378_graph_SparWindowWeighted.mat").Graphs_W;
 Smooth378 = load("..\graph_learning\graph_data\378_graph_SmoothWindowWeighted.mat").Graphs_W;
 
-node = load("..\extract_data\nodeLabels.mat").nodes;
+node = load("..\extract_data\nodeLabels.mat").numbers;
 scale = load("..\extract_data\rating.mat").scale;
 
 %% Window scale

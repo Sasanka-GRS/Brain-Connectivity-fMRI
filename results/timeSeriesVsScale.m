@@ -6,7 +6,7 @@ Data386 = load("..\combination\combined_data\386_data_combined.mat").data;
 Data797 = load("..\combination\combined_data\797_data_combined.mat").data;
 Data820 = load("..\combination\combined_data\820_data_combined.mat").data;
 
-node = load("..\extract_data\nodeLabels.mat").nodes;
+node = load("..\extract_data\nodeLabels.mat").numbers;
 scale = load("..\extract_data\rating.mat").scale;
 
 %% Scale downsampling

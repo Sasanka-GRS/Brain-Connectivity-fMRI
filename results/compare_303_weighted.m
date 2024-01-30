@@ -10,8 +10,8 @@ GraphsSmooth = load("..\graph_learning\graph_data\303_graph_SmoothWindowWeighted
 GraphsSpar = load("..\graph_learning\graph_data\303_graph_SparWindowWeighted.mat");
 GraphsPear = load("..\graph_learning\graph_data\303_graph_PearWindowWeighted.mat");
 
-node = load("..\extract_data\nodeLabels.mat").nodes;
-layout = load("..\extract_data\nodeLayouts.mat").locs;
+node = load("..\extract_data\nodeLabels.mat").numbers;
+layout = load("..\extract_data\nodeLayout.mat").locs;
 
 %% Average adjacency over time
 W_Sim = sum(GraphsSim.Graphs_W,3);
@@ -69,5 +69,27 @@ subplot(1,4,4)
 plotting(layout(:,1:2),W_Smooth,topSmooth,node);
 title('Smoothness','FontSize',25);
 set(gca,'XColor', 'none','YColor','none')
+tightfig
 
+sgtitle('Weighted Learning using Methods','FontSize',25);
+
+figure()
+
+subplot(1,4,1)
+plotting_circle(W_Sim,topSim,node);
+title('Similarity','FontSize',25);
+set(gca,'XColor', 'none','YColor','none')
+subplot(1,4,2)
+plotting_circle(W_Spar,topSpar,node);
+title('Sparsity','FontSize',25);
+set(gca,'XColor', 'none','YColor','none')
+subplot(1,4,3)
+plotting_circle(W_Pear,topPear,node);
+title('Pearson','FontSize',25);
+set(gca,'XColor', 'none','YColor','none')
+subplot(1,4,4)
+plotting_circle(W_Smooth,topSmooth,node);
+title('Smoothness','FontSize',25);
+set(gca,'XColor', 'none','YColor','none')
+tightfig
 sgtitle('Weighted Learning using Methods','FontSize',25);
