@@ -7,6 +7,8 @@ Y = X;
 
 %% Perform iterations
 
+prevOptVal = Inf;
+
 for i = 1:iter
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Solve for L_hat %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,6 +26,12 @@ for i = 1:iter
     L_hat - diag(diag(L_hat)) <= 0; % Non-diagonal entries <= 0
 
     cvx_end
+
+    if(abs(cvx_optval-prevOptVal)<1e-4)
+        break;
+    end
+
+    prevOptVal = cvx_optval;
 
     % Solve for Y_hat
     Y_hat = (eye(N) + alpha * L_hat) \ X;
