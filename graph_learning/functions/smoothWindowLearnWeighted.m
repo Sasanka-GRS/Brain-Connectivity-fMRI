@@ -12,7 +12,6 @@ for last = Num:L
     %% Start with Z_est as original data
 
     X = XData(:,last-Num+1:last);
-    L_est = zeros(N,N);
 
     W = smoothWindowInside(iter,alpha,beta,X);
     
