@@ -60,12 +60,12 @@ Smooth1511 = load("..\graph_learning\graph_data\1511_graph_SmoothWindowWeighted.
 Smooth1603 = load("..\graph_learning\graph_data\1603_graph_SmoothWindowWeighted.mat").Graphs_W;
 Smooth1629 = load("..\graph_learning\graph_data\1629_graph_SmoothWindowWeighted.mat").Graphs_W;
 
-node = load("..\extract_data\nodeLabels.mat").nodes;
+node = load("..\extract_data\nodeLabels.mat").names;
 
 %% Important Regions
 
-R1 = "insula_L";
-R2 = "insula_R";
+R1 = "Insula_L";
+R2 = "Insula_R";
 
 N = size(Sim378);
 N = N(3);
@@ -96,30 +96,30 @@ Sim1629Signal = squeeze(Sim1629(indexR1,indexR2,:)/max(max(Sim1629(indexR1,index
 
 fig = figure;
 subplot(5,1,1)
-plot(time,Sim303Signal,LineWidth=1.5);
+plot(time,Sim998Signal,LineWidth=1.5);
 xlabel('Time (s)')
 ylabel('W')
 xL=xlim;
 yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'303','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
-title('Similarity 303 Insula (L) and Triangularis (R)');
+text(0.99*xL(2),0.99*yL(2),'998','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
+title('Similarity 998 Insula (L) and Insula (R)');
 subplot(5,1,2)
-plot(time,Sim378Signal,LineWidth=1.5);
+plot(time,Sim1352Signal,LineWidth=1.5);
 xlabel('Time (s)')
 ylabel('W')
-title('Similarity 378 Insula (L) and Triangularis (R)');
+title('Similarity 1352 Insula (L) and Insula (R)');
 subplot(5,1,3)
-plot(time,Sim386Signal,LineWidth=1.5);
+plot(time,Sim1511Signal,LineWidth=1.5);
 xlabel('Time (s)')
-title('Similarity 386 Insula (L) and Triangularis (R)');
+title('Similarity 1511 Insula (L) and Insula (R)');
 subplot(5,1,4)
-plot(time,Sim797Signal,LineWidth=1.5);
+plot(time,Sim1603Signal,LineWidth=1.5);
 xlabel('Time (s)')
-title('Similarity 797 Insula (L) and Triangularis (R)');
+title('Similarity 1603 Insula (L) and Insula (R)');
 subplot(5,1,5)
-plot(time,Sim820Signal,LineWidth=1.5);
+plot(time,Sim1629Signal,LineWidth=1.5);
 xlabel('Time (s)')
-title('Similarity 820 Insula (L) and Triangularis (R)');
+title('Similarity 1629 Insula (L) and Insula (R)');
 sgtitle('Variation across subjects Similarity','FontSize',20)
 
 %% Sparsity
@@ -141,34 +141,34 @@ Spar1629Signal = real(squeeze(Spar1629(indexR1,indexR2,:)/max(max(Spar1629(index
 
 fig = figure();
 subplot(5,1,1)
-plot(time,Spar303Signal,LineWidth=1.5);
+plot(time,Spar998Signal,LineWidth=1.5);
 xticklabels('')
 xL=xlim;
 yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'303','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
+text(0.99*xL(2),0.99*yL(2),'998','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 subplot(5,1,2)
-plot(time,Spar378Signal,LineWidth=1.5);
+plot(time,Spar1352Signal,LineWidth=1.5);
 xticklabels('')
 xL=xlim;
 yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'378','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
+text(0.99*xL(2),0.99*yL(2),'1352','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 subplot(5,1,3)
-plot(time,Spar386Signal,LineWidth=1.5);
+plot(time,Spar1511Signal,LineWidth=1.5);
 xticklabels('')
 xL=xlim;
 yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'386','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
+text(0.99*xL(2),0.99*yL(2),'1511','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 subplot(5,1,4)
-plot(time,Spar797Signal,LineWidth=1.5);
+plot(time,Spar1603Signal,LineWidth=1.5);
 xticklabels('')
 xL=xlim;
 yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'797','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
+text(0.99*xL(2),0.99*yL(2),'1603','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 subplot(5,1,5)
-plot(time,Spar820Signal,LineWidth=1.5);
+plot(time,Spar1629Signal,LineWidth=1.5);
 xL=xlim;
 yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'820','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
+text(0.99*xL(2),0.99*yL(2),'1629','HorizontalAlignment','right','VerticalAlignment','top','FontSize',14,'FontWeight','bold')
 han=axes(fig,'visible','off'); 
 han.Title.Visible='on';
 han.XLabel.Visible='on';
@@ -198,30 +198,30 @@ Pear1629Signal = squeeze(Pear1629(indexR1,indexR2,:)/max(max(Pear1629(indexR1,in
 
 figure()
 subplot(5,1,1)
-plot(time,Pear303Signal);
+plot(time,Pear998Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Pearson 303 Insula (L) and Triangularis (R)');
+title('Pearson 998 Insula (L) and Insula (R)');
 subplot(5,1,2)
-plot(time,Pear378Signal);
+plot(time,Pear1352Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Pearson 378 Insula (L) and Triangularis (R)');
+title('Pearson 1352 Insula (L) and Insula (R)');
 subplot(5,1,3)
-plot(time,Pear386Signal);
+plot(time,Pear1511Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Pearson 386 Insula (L) and Triangularis (R)');
+title('Pearson 1511 Insula (L) and Insula (R)');
 subplot(5,1,4)
-plot(time,Pear797Signal);
+plot(time,Pear1603Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Pearson 797 Insula (L) and Triangularis (R)');
+title('Pearson 1603 Insula (L) and Insula (R)');
 subplot(5,1,5)
-plot(time,Pear820Signal);
+plot(time,Pear1629Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Pearson 820 Insula (L) and Triangularis (R)');
+title('Pearson 1629 Insula (L) and Insula (R)');
 sgtitle('Variation across subjects Pearson')
 
 %% Smoothness
@@ -243,38 +243,38 @@ Smooth1629Signal = abs(squeeze(Smooth1629(indexR1,indexR2,:)/max(max(Smooth1629(
 
 figure()
 subplot(5,1,1)
-plot(time,Smooth303Signal);
+plot(time,Smooth998Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Smoothness 303 Insula (L) and Triangularis (R)');
+title('Smoothness 998 Insula (L) and Insula (R)');
 subplot(5,1,2)
-plot(time,Smooth378Signal);
+plot(time,Smooth1352Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Smoothness 378 Insula (L) and Triangularis (R)');
+title('Smoothness 1352 Insula (L) and Insula (R)');
 subplot(5,1,3)
-plot(time,Smooth386Signal);
+plot(time,Smooth1511Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Smoothness 386 Insula (L) and Triangularis (R)');
+title('Smoothness 1511 Insula (L) and Insula (R)');
 subplot(5,1,4)
-plot(time,Smooth797Signal);
+plot(time,Smooth1603Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Smoothness 797 Insula (L) and Triangularis (R)');
+title('Smoothness 1603 Insula (L) and Insula (R)');
 subplot(5,1,5)
-plot(time,Smooth820Signal);
+plot(time,Smooth1629Signal);
 xlabel('Time (s)')
 ylabel('W')
-title('Smoothness 820 Insula (L) and Triangularis (R)');
+title('Smoothness 1629 Insula (L) and Insula (R)');
 sgtitle('Variation across subjects Smoothness')
 
 %% Average
 
-Sim = (Sim303Signal + Sim378Signal + Sim386Signal + Sim797Signal + Sim820Signal + Sim998Signal + Sim1092Signal + Sim1093Signal + Sim1171Signal + Sim1271Signal + Sim1352Signal + Sim1511Signal + Sim1603Signal + Sim1629Signal)/14;
-Spar = (Spar303Signal + Spar378Signal + Spar386Signal + Spar797Signal + Spar820Signal + Spar998Signal + Spar1092Signal + Spar1093Signal + Spar1171Signal + Spar1271Signal + Spar1352Signal + Spar1511Signal + Spar1603Signal + Spar1629Signal)/14;
-Pear = (Pear303Signal + Pear378Signal + Pear386Signal + Pear797Signal + Pear820Signal + Pear998Signal + Pear1092Signal + Pear1093Signal + Pear1171Signal + Pear1271Signal + Pear1352Signal + Pear1511Signal + Pear1603Signal + Pear1629Signal)/14;
-Smooth = (Smooth303Signal + Smooth378Signal + Smooth386Signal + Smooth797Signal + Smooth820Signal + Smooth998Signal + Smooth1092Signal + Smooth1093Signal + Smooth1171Signal + Smooth1271Signal + Smooth1352Signal + Smooth1511Signal + Smooth1603Signal + Smooth1629Signal)/14;
+Sim = (Sim998Signal + Sim1352Signal + Sim1511Signal + Sim1603Signal + Sim1629Signal)/5;
+Spar = (Spar998Signal + Spar1352Signal + Spar1511Signal + Spar1603Signal + Spar1629Signal)/5;
+Pear = (Pear998Signal + Pear1352Signal + Pear1511Signal + Pear1603Signal + Pear1629Signal)/5;
+Smooth = (Smooth998Signal + Smooth1352Signal + Smooth1511Signal + Smooth1603Signal + Smooth1629Signal)/5;
 
 %% All subjects all methods
 

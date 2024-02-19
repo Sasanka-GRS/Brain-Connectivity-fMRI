@@ -29,7 +29,7 @@ fontsize(f,20,"points")
 
 %% Important Region
 
-R1 = "insula_L";
+R1 = "Insula_L";
 
 N = size(Data378);
 N = N(1);

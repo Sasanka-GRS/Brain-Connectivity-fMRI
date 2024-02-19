@@ -25,12 +25,12 @@ Pear820 = load("..\graph_learning\graph_data\820_graph_PearWindowWeighted.mat").
 Spar820 = load("..\graph_learning\graph_data\820_graph_SparWindowWeighted.mat").Graphs_W;
 Smooth820 = load("..\graph_learning\graph_data\820_graph_SmoothWindowWeighted.mat").Graphs_W;
 
-node = load("..\extract_data\nodeLabels.mat").numbers;
+node = load("..\extract_data\nodeLabels.mat").names;
 
 %% Important Regions
 
-R1 = "insula_L";
-R2 = "insula_R";
+R1 = "Insula_L";
+R2 = "Insula_R";
 
 N = size(Sim378);
 N = N(3);
@@ -84,15 +84,6 @@ Spar378Signal = real(squeeze(Spar378(indexR1,indexR2,:)/max(max(Spar378(indexR1,
 Spar386Signal = real(squeeze(Spar386(indexR1,indexR2,:)/max(max(Spar386(indexR1,indexR2,:)))));
 Spar797Signal = real(squeeze(Spar797(indexR1,indexR2,:)/max(max(Spar797(indexR1,indexR2,:)))));
 Spar820Signal = real(squeeze(Spar820(indexR1,indexR2,:)/max(max(Spar820(indexR1,indexR2,:)))));
-Spar998Signal = real(squeeze(Spar998(indexR1,indexR2,:)/max(max(Spar998(indexR1,indexR2,:)))));
-Spar1092Signal = real(squeeze(Spar1092(indexR1,indexR2,:)/max(max(Spar1092(indexR1,indexR2,:)))));
-Spar1093Signal = real(squeeze(Spar1093(indexR1,indexR2,:)/max(max(Spar1093(indexR1,indexR2,:)))));
-Spar1171Signal = real(squeeze(Spar1171(indexR1,indexR2,:)/max(max(Spar1171(indexR1,indexR2,:)))));
-Spar1271Signal = real(squeeze(Spar1271(indexR1,indexR2,:)/max(max(Spar1271(indexR1,indexR2,:)))));
-Spar1352Signal = real(squeeze(Spar1352(indexR1,indexR2,:)/max(max(Spar1352(indexR1,indexR2,:)))));
-Spar1511Signal = real(squeeze(Spar1511(indexR1,indexR2,:)/max(max(Spar1511(indexR1,indexR2,:)))));
-Spar1603Signal = real(squeeze(Spar1603(indexR1,indexR2,:)/max(max(Spar1603(indexR1,indexR2,:)))));
-Spar1629Signal = real(squeeze(Spar1629(indexR1,indexR2,:)/max(max(Spar1629(indexR1,indexR2,:)))));
 
 %{
 fig = figure();
@@ -143,15 +134,6 @@ Pear378Signal = squeeze(Pear378(indexR1,indexR2,:)/max(max(Pear378(indexR1,index
 Pear386Signal = squeeze(Pear386(indexR1,indexR2,:)/max(max(Pear386(indexR1,indexR2,:))));
 Pear797Signal = squeeze(Pear797(indexR1,indexR2,:)/max(max(Pear797(indexR1,indexR2,:))));
 Pear820Signal = squeeze(Pear820(indexR1,indexR2,:)/max(max(Pear820(indexR1,indexR2,:))));
-Pear998Signal = squeeze(Pear998(indexR1,indexR2,:)/max(max(Pear998(indexR1,indexR2,:))));
-Pear1092Signal = squeeze(Pear1092(indexR1,indexR2,:)/max(max(Pear1092(indexR1,indexR2,:))));
-Pear1093Signal = squeeze(Pear1093(indexR1,indexR2,:)/max(max(Pear1093(indexR1,indexR2,:))));
-Pear1171Signal = squeeze(Pear1171(indexR1,indexR2,:)/max(max(Pear1171(indexR1,indexR2,:))));
-Pear1271Signal = squeeze(Pear1271(indexR1,indexR2,:)/max(max(Pear1271(indexR1,indexR2,:))));
-Pear1352Signal = squeeze(Pear1352(indexR1,indexR2,:)/max(max(Pear1352(indexR1,indexR2,:))));
-Pear1511Signal = squeeze(Pear1511(indexR1,indexR2,:)/max(max(Pear1511(indexR1,indexR2,:))));
-Pear1603Signal = squeeze(Pear1603(indexR1,indexR2,:)/max(max(Pear1603(indexR1,indexR2,:))));
-Pear1629Signal = squeeze(Pear1629(indexR1,indexR2,:)/max(max(Pear1629(indexR1,indexR2,:))));
 
 %{
 figure()
@@ -190,15 +172,6 @@ Smooth378Signal = abs(squeeze(Smooth378(indexR1,indexR2,:)/max(max(Smooth378(ind
 Smooth386Signal = abs(squeeze(Smooth386(indexR1,indexR2,:)/max(max(Smooth386(indexR1,indexR2,:)))));
 Smooth797Signal = abs(squeeze(Smooth797(indexR1,indexR2,:)/max(max(Smooth797(indexR1,indexR2,:)))));
 Smooth820Signal = abs(squeeze(Smooth820(indexR1,indexR2,:)/max(max(Smooth820(indexR1,indexR2,:)))));
-Smooth998Signal = abs(squeeze(Smooth998(indexR1,indexR2,:)/max(max(Smooth998(indexR1,indexR2,:)))));
-Smooth1092Signal = abs(squeeze(Smooth1092(indexR1,indexR2,:)/max(max(Smooth1092(indexR1,indexR2,:)))));
-Smooth1093Signal = abs(squeeze(Smooth1093(indexR1,indexR2,:)/max(max(Smooth1093(indexR1,indexR2,:)))));
-Smooth1171Signal = abs(squeeze(Smooth1171(indexR1,indexR2,:)/max(max(Smooth1171(indexR1,indexR2,:)))));
-Smooth1271Signal = abs(squeeze(Smooth1271(indexR1,indexR2,:)/max(max(Smooth1271(indexR1,indexR2,:)))));
-Smooth1352Signal = abs(squeeze(Smooth1352(indexR1,indexR2,:)/max(max(Smooth1352(indexR1,indexR2,:)))));
-Smooth1511Signal = abs(squeeze(Smooth1511(indexR1,indexR2,:)/max(max(Smooth1511(indexR1,indexR2,:)))));
-Smooth1603Signal = abs(squeeze(Smooth1603(indexR1,indexR2,:)/max(max(Smooth1603(indexR1,indexR2,:)))));
-Smooth1629Signal = abs(squeeze(Smooth1629(indexR1,indexR2,:)/max(max(Smooth1629(indexR1,indexR2,:)))));
 
 %{
 figure()

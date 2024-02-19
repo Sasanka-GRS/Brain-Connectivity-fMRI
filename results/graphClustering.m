@@ -72,8 +72,8 @@ scaleW = zeros(L-Num+1,1);
 
 for i = 1:L-Num+1
     window = scaleD(i:i+Num-1);
-    average = sum(window,1)/Num;
-    scaleW(i) = average;
+    ward = sum(window,1)/Num;
+    scaleW(i) = ward;
 end
 
 %% Flatten
@@ -559,9 +559,119 @@ end
 
 CSmooth_cross = max(C_same_Smooth,C_inv_Smooth);
 
+%% DTW
+
+C_same_Sim = zeros(14,1);
+C_inv_Sim = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersSim(:,i);
+    b = scaleW;
+    c = 1-clustersSim(:,i);
+    C_same_Sim(i) = dtw(((a-mean(a))/(sqrt(var(a)))),((b-mean(b))/(sqrt(var(b)))));
+    C_inv_Sim(i) = dtw(((c-mean(c))/(sqrt(var(c)))),((b-mean(b))/(sqrt(var(b)))));
+end
+
+CSim_dtw = max(C_same_Sim,C_inv_Sim);
+
+C_same_Pear = zeros(14,1);
+C_inv_Pear = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersPear(:,i);
+    b = scaleW;
+    c = 1-clustersPear(:,i);
+    C_same_Pear(i) = dtw(((a-mean(a))/(sqrt(var(a)))),((b-mean(b))/(sqrt(var(b)))));
+    C_inv_Pear(i) = dtw(((c-mean(c))/(sqrt(var(c)))),((b-mean(b))/(sqrt(var(b)))));
+end
+
+CPear_dtw = max(C_same_Pear,C_inv_Pear);
+
+C_same_Spar = zeros(14,1);
+C_inv_Spar = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersSpar(:,i);
+    b = scaleW;
+    c = 1-clustersSpar(:,i);
+    C_same_Spar(i) = dtw(((a-mean(a))/(sqrt(var(a)))),((b-mean(b))/(sqrt(var(b)))));
+    C_inv_Spar(i) = dtw(((c-mean(c))/(sqrt(var(c)))),((b-mean(b))/(sqrt(var(b)))));
+end
+
+CSpar_dtw = max(C_same_Spar,C_inv_Spar);
+
+C_same_Smooth = zeros(14,1);
+C_inv_Smooth = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersSmooth(:,i);
+    b = scaleW;
+    c = 1-clustersSmooth(:,i);
+    C_same_Smooth(i) = dtw(((a-mean(a))/(sqrt(var(a)))),((b-mean(b))/(sqrt(var(b)))));
+    C_inv_Smooth(i) = dtw(((c-mean(c))/(sqrt(var(c)))),((b-mean(b))/(sqrt(var(b)))));
+end
+
+CSmooth_dtw = max(C_same_Smooth,C_inv_Smooth);
+
+%% Euclidean
+
+C_same_Sim = zeros(14,1);
+C_inv_Sim = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersSim(:,i);
+    b = scaleW;
+    c = 1-clustersSim(:,i);
+    C_same_Sim(i) = norm(((a-mean(a))/(sqrt(var(a))))-((b-mean(b))/(sqrt(var(b)))),2);
+    C_inv_Sim(i) = norm(((c-mean(c))/(sqrt(var(c))))-((b-mean(b))/(sqrt(var(b)))),2);
+end
+
+CSim_euc = max(C_same_Sim,C_inv_Sim);
+
+C_same_Pear = zeros(14,1);
+C_inv_Pear = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersPear(:,i);
+    b = scaleW;
+    c = 1-clustersPear(:,i);
+    C_same_Pear(i) = norm(((a-mean(a))/(sqrt(var(a))))-((b-mean(b))/(sqrt(var(b)))),2);
+    C_inv_Pear(i) = norm(((c-mean(c))/(sqrt(var(c))))-((b-mean(b))/(sqrt(var(b)))),2);
+end
+
+CPear_euc = max(C_same_Pear,C_inv_Pear);
+
+C_same_Spar = zeros(14,1);
+C_inv_Spar = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersSpar(:,i);
+    b = scaleW;
+    c = 1-clustersSpar(:,i);
+    C_same_Spar(i) = norm(((a-mean(a))/(sqrt(var(a))))-((b-mean(b))/(sqrt(var(b)))),2);
+    C_inv_Spar(i) = norm(((c-mean(c))/(sqrt(var(c))))-((b-mean(b))/(sqrt(var(b)))),2);
+end
+
+CSpar_euc = max(C_same_Spar,C_inv_Spar);
+
+C_same_Smooth = zeros(14,1);
+C_inv_Smooth = zeros(14,1);
+
+for i=1:length(subjects)
+    a = clustersSmooth(:,i);
+    b = scaleW;
+    c = 1-clustersSmooth(:,i);
+    C_same_Smooth(i) = norm(((a-mean(a))/(sqrt(var(a))))-((b-mean(b))/(sqrt(var(b)))),2);
+    C_inv_Smooth(i) = norm(((c-mean(c))/(sqrt(var(c))))-((b-mean(b))/(sqrt(var(b)))),2);
+end
+
+CSmooth_euc = max(C_same_Smooth,C_inv_Smooth);
+
 %% Tabulate
 
-compare = [CSim_cosine, CPear_cosine, CSpar_cosine, CSmooth_cosine];
+disp('Cosine Similarity')
+
+compare = [CSpar_cosine, CSim_cosine, CSmooth_cosine, CPear_cosine];
 compare1 = sum(compare,1)/14;
 
 T = array2table(compare,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
@@ -570,7 +680,31 @@ disp(T);
 T = array2table(compare1,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
 disp(T);
 
-compare = [CSim_cross-0.03, CPear_cross, CSpar_cross, CSmooth_cross];
+disp('Cross Correlation')
+
+compare = [CSpar_cross, CSim_cross, CSmooth_cross, CPear_cross];
+compare1 = sum(compare,1)/14;
+
+T = array2table(compare,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
+disp(T);
+
+T = array2table(compare1,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
+disp(T);
+
+disp('Euclidean distance')
+
+compare = [CSpar_euc, CSim_euc, CSmooth_euc, CPear_euc];
+compare1 = sum(compare,1)/14;
+
+T = array2table(compare,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
+disp(T);
+
+T = array2table(compare1,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
+disp(T);
+
+disp('DTW distance')
+
+compare = [CSpar_dtw, CSim_dtw, CSmooth_dtw, CPear_dtw];
 compare1 = sum(compare,1)/14;
 
 T = array2table(compare,'VariableNames',{'Similarity','Sparsity','Smoothness','Pearson'});
@@ -664,9 +798,9 @@ clustersSmooth_avg = clustersSmooth_avg/14;
 
 fig = figure();
 subplot(2,1,1)
-plot(1:2:2*length(scaleW),(clustersSpar_avg-sum(clustersSpar_avg)/length(clustersSpar_avg))/(sqrt(var(clustersSpar_avg))),LineWidth=2.0)
+plot(1:2:2*length(scaleW),-(clustersSpar_avg-sum(clustersSpar_avg)/length(clustersSpar_avg))/(sqrt(var(clustersSpar_avg))),LineWidth=2.0)
 ylim([-3,5])
-yticklabels('')
+%yticklabels('')
 xlabel('Time (s)','FontSize',15,'FontWeight','bold')
 xL=xlim;
 yL=ylim;
@@ -677,3 +811,27 @@ hold off
 legend('Cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
 fontsize(fig,15,"points")
 %print('graphClustering_superimposed','-dpdf','-bestfit')
+
+%% Get all top subjects for seeds
+
+subjects = ["303","378","386","797","820","998","1092","1093","1171","1271","1352","1511","1603","1629"];
+
+K = 5; % Top number of subjects to be chosen
+
+C_same_Spar = zeros(14,1);
+C_inv_Spar = zeros(14,1);
+
+for i=1:length(subjects)
+    C_same_Spar(i) = max(abs(xcorr(-clustersSpar(:,i),scaleW,'coeff')));
+    C_inv_Spar(i) = max(abs(xcorr(-1+clustersSpar(:,i),scaleW,'coeff')));
+end
+
+CSpar_cross = max(C_same_Spar,C_inv_Spar);
+
+sortedCSpar_cross = sort(CSpar_cross,'descend');
+threshold = sortedCSpar_cross(K+1);
+indices = CSpar_cross>threshold;
+
+topSubjects = subjects(indices);
+disp(topSubjects)
+%save('topSubjects.mat',"topSubjects");
