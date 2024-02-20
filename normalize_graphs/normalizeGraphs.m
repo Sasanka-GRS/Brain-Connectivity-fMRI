@@ -2,7 +2,7 @@ function normalizeGraphs(subject)
 
 s1 = "..\graph_learning\graph_data\";
 s2 = "_graph_";
-s4 = "WindowWeighted";
+s4 = "WindowWeighted_M2.mat";
 
 methods = ["Sim", "Pear", "Smooth", "Spar"];
 
@@ -25,7 +25,7 @@ end
 %% Save
 
 s1 = ".\normalized_graphs\";
-s2 = "_normalizedGraphs.mat";
+s2 = "_normalizedGraphs_M2.mat";
 sub = s1+subject+s2;
 
 save(sub,"graphOut");

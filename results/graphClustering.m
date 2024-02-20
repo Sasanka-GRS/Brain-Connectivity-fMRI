@@ -810,7 +810,7 @@ plot(1:2:2*length(scaleW),(scaleW-(sum(scaleW)/length(scaleW)))/(sqrt(var(scaleW
 hold off
 legend('Cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
 fontsize(fig,15,"points")
-%print('graphClustering_superimposed','-dpdf','-bestfit')
+print('graphClustering_superimposed','-dpdf','-bestfit')
 
 %% Get all top subjects for seeds
 
