@@ -1,49 +1,49 @@
 %% Read the data
 
-Sim303 = load("..\graph_learning\graph_data\303_graph_SimWindowWeighted.mat").Graphs_W;
-Sim378 = load("..\graph_learning\graph_data\378_graph_SimWindowWeighted.mat").Graphs_W;
-Sim386 = load("..\graph_learning\graph_data\386_graph_SimWindowWeighted.mat").Graphs_W;
-Sim797 = load("..\graph_learning\graph_data\797_graph_SimWindowWeighted.mat").Graphs_W;
-Sim820 = load("..\graph_learning\graph_data\820_graph_SimWindowWeighted.mat").Graphs_W;
-Sim998 = load("..\graph_learning\graph_data\998_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1092 = load("..\graph_learning\graph_data\1092_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1093 = load("..\graph_learning\graph_data\1093_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1171 = load("..\graph_learning\graph_data\1171_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1271 = load("..\graph_learning\graph_data\1271_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1352 = load("..\graph_learning\graph_data\1352_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1511 = load("..\graph_learning\graph_data\1511_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1603 = load("..\graph_learning\graph_data\1603_graph_SimWindowWeighted.mat").Graphs_W;
-Sim1629 = load("..\graph_learning\graph_data\1629_graph_SimWindowWeighted.mat").Graphs_W;
+Sim303 = load("..\graph_learning\graph_data\303_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim378 = load("..\graph_learning\graph_data\378_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim386 = load("..\graph_learning\graph_data\386_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim797 = load("..\graph_learning\graph_data\797_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim820 = load("..\graph_learning\graph_data\820_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim998 = load("..\graph_learning\graph_data\998_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1092 = load("..\graph_learning\graph_data\1092_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1093 = load("..\graph_learning\graph_data\1093_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1171 = load("..\graph_learning\graph_data\1171_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1271 = load("..\graph_learning\graph_data\1271_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1352 = load("..\graph_learning\graph_data\1352_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1511 = load("..\graph_learning\graph_data\1511_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1603 = load("..\graph_learning\graph_data\1603_graph_SimWindowWeighted_M2.mat").Graphs_W;
+Sim1629 = load("..\graph_learning\graph_data\1629_graph_SimWindowWeighted_M2.mat").Graphs_W;
 
-Pear303 = load("..\graph_learning\graph_data\303_graph_PearWindowWeighted.mat").Graphs_W;
-Pear378 = load("..\graph_learning\graph_data\378_graph_PearWindowWeighted.mat").Graphs_W;
-Pear386 = load("..\graph_learning\graph_data\386_graph_PearWindowWeighted.mat").Graphs_W;
-Pear797 = load("..\graph_learning\graph_data\797_graph_PearWindowWeighted.mat").Graphs_W;
-Pear820 = load("..\graph_learning\graph_data\820_graph_PearWindowWeighted.mat").Graphs_W;
-Pear998 = load("..\graph_learning\graph_data\998_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1092 = load("..\graph_learning\graph_data\1092_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1093 = load("..\graph_learning\graph_data\1093_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1171 = load("..\graph_learning\graph_data\1171_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1271 = load("..\graph_learning\graph_data\1271_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1352 = load("..\graph_learning\graph_data\1352_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1511 = load("..\graph_learning\graph_data\1511_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1603 = load("..\graph_learning\graph_data\1603_graph_PearWindowWeighted.mat").Graphs_W;
-Pear1629 = load("..\graph_learning\graph_data\1629_graph_PearWindowWeighted.mat").Graphs_W;
+Pear303 = load("..\graph_learning\graph_data\303_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear378 = load("..\graph_learning\graph_data\378_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear386 = load("..\graph_learning\graph_data\386_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear797 = load("..\graph_learning\graph_data\797_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear820 = load("..\graph_learning\graph_data\820_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear998 = load("..\graph_learning\graph_data\998_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1092 = load("..\graph_learning\graph_data\1092_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1093 = load("..\graph_learning\graph_data\1093_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1171 = load("..\graph_learning\graph_data\1171_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1271 = load("..\graph_learning\graph_data\1271_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1352 = load("..\graph_learning\graph_data\1352_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1511 = load("..\graph_learning\graph_data\1511_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1603 = load("..\graph_learning\graph_data\1603_graph_PearWindowWeighted_M2.mat").Graphs_W;
+Pear1629 = load("..\graph_learning\graph_data\1629_graph_PearWindowWeighted_M2.mat").Graphs_W;
 
-Spar303 = load("..\graph_learning\graph_data\303_graph_SparWindowWeighted.mat").Graphs_W;
-Spar378 = load("..\graph_learning\graph_data\378_graph_SparWindowWeighted.mat").Graphs_W;
-Spar386 = load("..\graph_learning\graph_data\386_graph_SparWindowWeighted.mat").Graphs_W;
-Spar797 = load("..\graph_learning\graph_data\797_graph_SparWindowWeighted.mat").Graphs_W;
-Spar820 = load("..\graph_learning\graph_data\820_graph_SparWindowWeighted.mat").Graphs_W;
-Spar998 = load("..\graph_learning\graph_data\998_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1092 = load("..\graph_learning\graph_data\1092_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1093 = load("..\graph_learning\graph_data\1093_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1171 = load("..\graph_learning\graph_data\1171_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1271 = load("..\graph_learning\graph_data\1271_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1352 = load("..\graph_learning\graph_data\1352_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1511 = load("..\graph_learning\graph_data\1511_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1603 = load("..\graph_learning\graph_data\1603_graph_SparWindowWeighted.mat").Graphs_W;
-Spar1629 = load("..\graph_learning\graph_data\1629_graph_SparWindowWeighted.mat").Graphs_W;
+Spar303 = load("..\graph_learning\graph_data\303_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar378 = load("..\graph_learning\graph_data\378_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar386 = load("..\graph_learning\graph_data\386_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar797 = load("..\graph_learning\graph_data\797_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar820 = load("..\graph_learning\graph_data\820_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar998 = load("..\graph_learning\graph_data\998_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1092 = load("..\graph_learning\graph_data\1092_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1093 = load("..\graph_learning\graph_data\1093_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1171 = load("..\graph_learning\graph_data\1171_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1271 = load("..\graph_learning\graph_data\1271_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1352 = load("..\graph_learning\graph_data\1352_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1511 = load("..\graph_learning\graph_data\1511_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1603 = load("..\graph_learning\graph_data\1603_graph_SparWindowWeighted_M2.mat").Graphs_W;
+Spar1629 = load("..\graph_learning\graph_data\1629_graph_SparWindowWeighted_M2.mat").Graphs_W;
 
 Smooth303 = load("..\graph_learning\graph_data\303_graph_SmoothWindowWeighted.mat").Graphs_W;
 Smooth378 = load("..\graph_learning\graph_data\378_graph_SmoothWindowWeighted.mat").Graphs_W;
@@ -60,11 +60,11 @@ Smooth1511 = load("..\graph_learning\graph_data\1511_graph_SmoothWindowWeighted.
 Smooth1603 = load("..\graph_learning\graph_data\1603_graph_SmoothWindowWeighted.mat").Graphs_W;
 Smooth1629 = load("..\graph_learning\graph_data\1629_graph_SmoothWindowWeighted.mat").Graphs_W;
 
-scale = load("..\extract_data\rating.mat").scale;
+scale = load("..\extract_data\rating_M2.mat").scale;
 
 %% Window scale
 
-MOVIE = 1;
+MOVIE = 2;
 
 if(MOVIE==1)
     scaleD = scale(1:2:end);
@@ -816,11 +816,19 @@ clustersSpar_avg = clustersSpar_avg/14;
 clustersPear_avg = clustersPear_avg/14;
 clustersSmooth_avg = clustersSmooth_avg/14;
 
-%shift = [zeros(1,175),ones(1,25),zeros(1,49)]';
+%shiftPear = [zeros(1,175),ones(1,25),zeros(1,49)]';
+
+%save("clustersSpar","clustersSpar_avg");
+%save("emotion1","scaleW");
+
+%% Plotting
+
+clustersSpar_avg1 = load('clustersSpar.mat').clustersSpar_avg;
+scaleW1 = load('emotion1.mat').scaleW;
 
 fig = figure();
 subplot(2,1,1)
-plot(1:2:2*length(scaleW),-(clustersSpar_avg-sum(clustersSpar_avg)/length(clustersSpar_avg))/(sqrt(var(clustersSpar_avg))),LineWidth=2.0)
+plot(1:2:2*length(scaleW1),-(clustersSpar_avg1-sum(clustersSpar_avg1)/length(clustersSpar_avg1))/(sqrt(var(clustersSpar_avg1))),LineWidth=2.0)
 ylim([-3,5])
 %yticklabels('')
 xlabel('Time (s)','FontSize',15,'FontWeight','bold')
@@ -828,12 +836,12 @@ xL=xlim;
 yL=ylim;
 %text(0.99*xL(2),0.99*yL(2),'Cluster Label','HorizontalAlignment','right','VerticalAlignment','top','FontSize',20,'FontWeight','bold')
 hold on
-plot(1:2:2*length(scaleW),10*(scaleW-(sum(scaleW)/length(scaleW))),LineWidth=2.0)
+plot(1:2:2*length(scaleW1),(scaleW1-(sum(scaleW1)/length(scaleW1)))/sqrt(var(scaleW1)),LineWidth=2.0)
 hold off
 legend('Graph cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
 title('MOVIE 1')
 fontsize(fig,15,"points")
-subplot(2,1,1)
+subplot(2,1,2)
 plot(1:2:2*length(scaleW),-(clustersSpar_avg-sum(clustersSpar_avg)/length(clustersSpar_avg))/(sqrt(var(clustersSpar_avg))),LineWidth=2.0)
 ylim([-3,5])
 %yticklabels('')
@@ -847,7 +855,7 @@ hold off
 legend('Graph cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
 title('MOVIE 2')
 fontsize(fig,15,"points")
-%print('graphClustering_superimposed','-dpdf','-bestfit')
+%print('graphClustering_superimposed_both','-dpdf','-bestfit')
 
 %% Get all top subjects for seeds
 
