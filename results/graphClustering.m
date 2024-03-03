@@ -64,16 +64,33 @@ scale = load("..\extract_data\rating.mat").scale;
 
 %% Window scale
 
-scaleD = scale(1:2:end);
-L = length(scaleD);
-Num = 8; % Window Length
+MOVIE = 1;
 
-scaleW = zeros(L-Num+1,1);
+if(MOVIE==1)
+    scaleD = scale(1:2:end);
+    L = length(scaleD);
+    Num = 8; % Window Length
 
-for i = 1:L-Num+1
-    window = scaleD(i:i+Num-1);
-    ward = sum(window,1)/Num;
-    scaleW(i) = ward;
+    scaleW = zeros(L-Num+1,1);
+
+    for i = 1:L-Num+1
+        window = scaleD(i:i+Num-1);
+        ward = sum(window,1)/Num;
+        scaleW(i) = ward;
+    end
+else
+    scale = scale(6:end-8);
+    scaleD = scale(1:2:end);
+    L = length(scaleD);
+    Num = 8; % Window Length
+
+    scaleW = zeros(L-Num+1,1);
+
+    for i = 1:L-Num+1
+        window = scaleD(i:i+Num-1);
+        ward = sum(window,1)/Num;
+        scaleW(i) = ward;
+    end
 end
 
 %% Flatten
@@ -714,7 +731,7 @@ T = array2table(compare1,'VariableNames',{'Similarity','Sparsity','Smoothness','
 disp(T);
 
 %%
-
+%{
 fig = figure();
 plot(1:2:2*length(scaleW),(clustersSpar(:,end-2)-sum(clustersSpar(:,end-2))/length(clustersSpar(:,end-2)))/(sqrt(var(clustersSpar(:,end-2)))),LineWidth=2.0)
 ylim([-2,3])
@@ -727,6 +744,7 @@ plot(1:2:2*length(scaleW),(scaleW-(sum(scaleW)/length(scaleW)))/(sqrt(var(scaleW
 hold off
 xlabel('Time (s)','FontSize',30,'FontWeight','bold')
 legend('Cluster labels','Emotion Contagion Scale', 'FontSize', 20, 'FontWeight', 'bold');
+%}
 %subplot(2,1,2)
 %plot(1:2:2*length(scaleW),scaleW,LineWidth=2.0)
 %xlabel('Time (s)','FontSize',30,'FontWeight','bold')
@@ -749,14 +767,16 @@ text(0.99*xL(2),0.99*yL(2),'Cluster labels','HorizontalAlignment','right','Verti
 xlabel('Time (s)','FontSize',30,'FontWeight','bold')
 print('graphClusters','-dpdf','-bestfit')
 %}
+
 figure()
-plot(1:2:2*length(scaleW),sig2/max(sig2),LineWidth=2.0)
+plot(sig2/max(sig2),LineWidth=2.0)
 xlabel('Time (s)','FontSize',30,'FontWeight','bold')
 yticklabels('')
 xL=xlim;
 yL=ylim;
 text(0.99*xL(2),0.99*yL(2),'Emotion contagion scale','HorizontalAlignment','right','VerticalAlignment','top','FontSize',20,'FontWeight','bold')
 %print('emotionScale','-dpdf','-bestfit')
+
 
 %% Avg cluster labels
 
@@ -796,6 +816,8 @@ clustersSpar_avg = clustersSpar_avg/14;
 clustersPear_avg = clustersPear_avg/14;
 clustersSmooth_avg = clustersSmooth_avg/14;
 
+%shift = [zeros(1,175),ones(1,25),zeros(1,49)]';
+
 fig = figure();
 subplot(2,1,1)
 plot(1:2:2*length(scaleW),-(clustersSpar_avg-sum(clustersSpar_avg)/length(clustersSpar_avg))/(sqrt(var(clustersSpar_avg))),LineWidth=2.0)
@@ -806,11 +828,26 @@ xL=xlim;
 yL=ylim;
 %text(0.99*xL(2),0.99*yL(2),'Cluster Label','HorizontalAlignment','right','VerticalAlignment','top','FontSize',20,'FontWeight','bold')
 hold on
-plot(1:2:2*length(scaleW),(scaleW-(sum(scaleW)/length(scaleW)))/(sqrt(var(scaleW))),LineWidth=2.0)
+plot(1:2:2*length(scaleW),10*(scaleW-(sum(scaleW)/length(scaleW))),LineWidth=2.0)
 hold off
-legend('Cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
+legend('Graph cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
+title('MOVIE 1')
 fontsize(fig,15,"points")
-print('graphClustering_superimposed','-dpdf','-bestfit')
+subplot(2,1,1)
+plot(1:2:2*length(scaleW),-(clustersSpar_avg-sum(clustersSpar_avg)/length(clustersSpar_avg))/(sqrt(var(clustersSpar_avg))),LineWidth=2.0)
+ylim([-3,5])
+%yticklabels('')
+xlabel('Time (s)','FontSize',15,'FontWeight','bold')
+xL=xlim;
+yL=ylim;
+%text(0.99*xL(2),0.99*yL(2),'Cluster Label','HorizontalAlignment','right','VerticalAlignment','top','FontSize',20,'FontWeight','bold')
+hold on
+plot(1:2:2*length(scaleW),10*(scaleW-(sum(scaleW)/length(scaleW))),LineWidth=2.0)
+hold off
+legend('Graph cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
+title('MOVIE 2')
+fontsize(fig,15,"points")
+%print('graphClustering_superimposed','-dpdf','-bestfit')
 
 %% Get all top subjects for seeds
 

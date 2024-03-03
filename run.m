@@ -73,27 +73,26 @@ for i = 1:length(subjects)
 
     lambda_sparsity = 2.5; % For sparsity based learning
 
-    cd graph_learning\
+    %cd graph_learning\
     %{   
     optionLearning = 'SI';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
     
     optionLearning = 'PE';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
-    %}
+    
     optionLearning = 'SP';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
-    %{
+    
     optionLearning = 'SM';
     learn(windowSize,optionLearning,sigma_similarity,alpha_smoothness,beta_smoothness,iter_smoothness,lambda_sparsity,subject);
     %}
-    cd ..
-    %{
+    
     cd normalize_graphs\
     normalizeGraphs(subject);
     
     cd ..
-    %}
+    
     
 end
 

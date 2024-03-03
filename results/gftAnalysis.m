@@ -8,8 +8,8 @@ cutoff1 = 0;
 cutoff2 = 0;
 option = 'MED'; % 'MED' for choosing the middle value and 'AVG' for averaging the window
 
-node = load("..\..\extract_data\nodeLabels.mat").names;
-layout = load("..\..\extract_data\nodeLayout.mat").locs;
+node = load("..\extract_data\nodeLabels.mat").names;
+layout = load("..\extract_data\nodeLayout.mat").locs;
 
 %% Run loop for all subjects
 
@@ -20,18 +20,18 @@ for i = 1:length(subjects)
 
     %% Load data
 
-    s1 = "..\..\normalize_graphs\normalized_graphs\";
-    s2 = "_normalizedGraphs.mat";
+    s1 = "..\normalize_graphs\normalized_graphs\";
+    s2 = "_normalizedGraphs_M2.mat";
     sub = s1 + subject + s2;
 
     graphOut = load(sub).graphOut;
     SimSub = graphOut.Sim;
     SparSub = graphOut.Spar;
     PearSub = graphOut.Pear;
-    SmoothSub = graphOut.Smooth;
+    %SmoothSub = graphOut.Smooth;
 
-    s1 = "..\..\combination\combined_data\";
-    s2 = "_data_combined.mat";
+    s1 = "..\combination\combined_data\";
+    s2 = "_data_combined_M2.mat";
     sub = s1 + subject + s2;
 
     DataSub = load(sub).data;
@@ -51,7 +51,7 @@ for i = 1:length(subjects)
     LPFSimSub = [];
     LPFSparSub = [];
     LPFPearSub = [];
-    LPFSmoothSub = [];
+    %LPFSmoothSub = [];
 
 
     cutoff1 = 0;
@@ -61,7 +61,7 @@ for i = 1:length(subjects)
         LPFSimSub = [LPFSimSub, graphSpectralFilter(DataSub(:,start:last),SimSub(:,:,start),cutoff1,cutoff2,option)];
         LPFSparSub = [LPFSparSub, graphSpectralFilter(DataSub(:,start:last),SparSub(:,:,start),cutoff1,cutoff2,option)];
         LPFPearSub = [LPFPearSub, graphSpectralFilter(DataSub(:,start:last),PearSub(:,:,start),cutoff1,cutoff2,option)];
-        LPFSmoothSub = [LPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
+        %LPFSmoothSub = [LPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
         start = start + 1;
         last = last + 1;
     end
@@ -74,7 +74,7 @@ for i = 1:length(subjects)
     BPFSimSub = [];
     BPFSparSub = [];
     BPFPearSub = [];
-    BPFSmoothSub = [];
+    %BPFSmoothSub = [];
 
     cutoff1 = floor(N/3)+1;
     cutoff2 = 2*floor(N/3);
@@ -83,7 +83,7 @@ for i = 1:length(subjects)
         BPFSimSub = [BPFSimSub, graphSpectralFilter(DataSub(:,start:last),SimSub(:,:,start),cutoff1,cutoff2,option)];
         BPFSparSub = [BPFSparSub, graphSpectralFilter(DataSub(:,start:last),SparSub(:,:,start),cutoff1,cutoff2,option)];
         BPFPearSub = [BPFPearSub, graphSpectralFilter(DataSub(:,start:last),PearSub(:,:,start),cutoff1,cutoff2,option)];
-        BPFSmoothSub = [BPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
+        %BPFSmoothSub = [BPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
         start = start + 1;
         last = last + 1;
     end
@@ -96,7 +96,7 @@ for i = 1:length(subjects)
     HPFSimSub = [];
     HPFSparSub = [];
     HPFPearSub = [];
-    HPFSmoothSub = [];
+    %HPFSmoothSub = [];
 
     cutoff1 = 2*floor(N/3);
     cutoff2 = N;
@@ -105,7 +105,7 @@ for i = 1:length(subjects)
         HPFSimSub = [HPFSimSub, graphSpectralFilter(DataSub(:,start:last),SimSub(:,:,start),cutoff1,cutoff2,option)];
         HPFSparSub = [HPFSparSub, graphSpectralFilter(DataSub(:,start:last),SparSub(:,:,start),cutoff1,cutoff2,option)];
         HPFPearSub = [HPFPearSub, graphSpectralFilter(DataSub(:,start:last),PearSub(:,:,start),cutoff1,cutoff2,option)];
-        HPFSmoothSub = [HPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
+        %HPFSmoothSub = [HPFSmoothSub, graphSpectralFilter(DataSub(:,start:last),SmoothSub(:,:,start),cutoff1,cutoff2,option)];
         start = start + 1;
         last = last + 1;
     end
@@ -113,7 +113,7 @@ for i = 1:length(subjects)
     %% Save
     
     s1 = "gft\";
-    s2 = "_GFTFiltered.mat";
+    s2 = "_GFTFiltered_M2.mat";
     sub = s1 + subject + s2;
 
     Sim.LPF = LPFSimSub;
@@ -128,11 +128,11 @@ for i = 1:length(subjects)
     Pear.BPF = BPFPearSub;
     Pear.HPF = HPFPearSub;
 
-    Smooth.LPF = LPFSmoothSub;
-    Smooth.BPF = BPFSmoothSub;
-    Smooth.HPF = HPFSmoothSub;
+    %Smooth.LPF = LPFSmoothSub;
+    %Smooth.BPF = BPFSmoothSub;
+    %Smooth.HPF = HPFSmoothSub;
 
-    save(sub,"Sim","Pear","Spar","Smooth");
+    save(sub,"Sim","Pear","Spar");
 end
 
 %% Display

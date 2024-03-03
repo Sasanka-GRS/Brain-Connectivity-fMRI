@@ -4,9 +4,9 @@ s1 = "..\graph_learning\graph_data\";
 s2 = "_graph_";
 s4 = "WindowWeighted_M2.mat";
 
-methods = ["Sim", "Pear", "Smooth", "Spar"];
+methods = ["Sim", "Pear", "Spar"];
 
-for i = 1:4
+for i = 1:length(methods)
     s3 = methods(i);
     sub = s1+subject+s2+s3+s4;
     graph = load(sub).Graphs_W;
