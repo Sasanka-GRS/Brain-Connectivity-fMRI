@@ -855,7 +855,9 @@ hold off
 legend('Graph cluster labels','Emotion contagion scale','FontSize',12,'FontWeight','bold')
 title('MOVIE 2')
 fontsize(fig,15,"points")
-%print('graphClustering_superimposed_both','-dpdf','-bestfit')
+pos = get(gcf, 'Position');
+set(gcf, 'Position',pos+[0 -150 0 150])
+print('graphClustering_superimposed_both','-dpdf','-bestfit')
 
 %% Get all top subjects for seeds
 
