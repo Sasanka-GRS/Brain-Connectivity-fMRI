@@ -22,6 +22,7 @@ for i = 1:L
 end
 
 % Plot a single time-series
+%{
 figure()
 plot(time,timeseries(:,1),'r',LineWidth=1.5)
 xlabel('Time (s)')
@@ -39,6 +40,9 @@ legend(fNames)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('Timeseries of a single voxel from all regions (Unnormalized)')
+%}
+
+timeseriesUn = timeseries;
     
 %% Normalize
 
@@ -61,6 +65,7 @@ for i = 1:L
 end
 
 % Plot a single time-series
+%{
 figure()
 plot(time,timeseries(:,1),'r',LineWidth=1.5)
 xlabel('Time (s)')
@@ -78,6 +83,9 @@ legend(fNames)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('Timeseries of a single voxel from all regions (Normalized)')
+%}
+
+timeseriesN = timeseries;
 
 %% Transition to Normalize
 
@@ -90,6 +98,7 @@ timeseriesRaw = timeseriesRaw(:,50);
 timeseriesNorm = dataNorm.ACC_L;
 timeseriesNorm = timeseriesNorm(:,50);
 
+%{
 figure()
 subplot(2,1,1)
 plot(timeseriesRaw,'r',LineWidth=1.5)
@@ -101,6 +110,44 @@ plot(timeseriesNorm,'b',LineWidth=1.5)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('Timeseries of a single voxel in ACC\_L (Normalized)')
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+fig = figure;
+subplot(2,1,1)
+hold on
+for i = 1:L
+    plot(time,timeseriesUn(:,i),LineWidth=1.5)
+end
+hold off
+xticklabels('')
+xlim([0,512])
+ylim([0,2150])
+xL=xlim;
+yL=ylim;
+text(0.99*xL(2),0.99*yL(2),'Raw BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+subplot(2,1,2)
+hold on
+for i = 1:L
+    %if()
+    plot(time,timeseriesN(:,i),LineWidth=1.5)
+end
+hold off
+xlim([0,512])
+ylim([-120,150])
+xlabel('Time (s)','FontSize',15);
+xL=xlim;
+yL=ylim;
+text(0.99*xL(2),0.99*yL(2),'Normalized BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+han=axes(fig,'visible','off'); 
+han.Title.Visible='on';
+han.XLabel.Visible='on';
+han.YLabel.Visible='on';
+%ylabel(han,'BOLD', 'FontSize', 15);
+fontsize(fig,15,"points")
+tightfig
+print('normalize','-dpdf','-bestfit')
 
 %% HPF
 
@@ -123,6 +170,7 @@ for i = 1:L
 end
 
 % Plot a single time-series
+%{
 figure()
 plot(time,timeseries(:,1),'r',LineWidth=1.5)
 xlabel('Time (s)')
@@ -140,6 +188,7 @@ legend(fNames)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('High Pass version of single voxel from all regions')
+%}
 
 %% Transition to HPF
 
@@ -151,7 +200,7 @@ timeseriesNorm = timeseriesNorm(:,50);
 
 timeseriesHPF = dataHPF.ACC_L;
 timeseriesHPF = timeseriesHPF(:,50);
-
+%{
 figure()
 subplot(2,1,1)
 plot(timeseriesNorm,'r',LineWidth=1.5)
@@ -163,6 +212,7 @@ plot(timeseriesHPF,'b',LineWidth=1.5)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('High pass version of a single voxel in ACC\_L')
+%}
 
 %% Clustering
 
@@ -185,6 +235,7 @@ for i = 1:L
 end
 
 % Plot a single time-series
+%{
 figure()
 plot(time,timeseries(:,1),'r',LineWidth=1.5)
 xlabel('Time (s)')
@@ -202,6 +253,7 @@ legend(fNames)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('Single voxel of clustered data in all regions')
+%}
 
 %% Transition to clustering
 
@@ -215,7 +267,7 @@ timeseriesHPF = sum(timeseriesHPF,2)/S(2);
 timeseriesClu = dataClu.ACC_L;
 S = size(timeseriesClu);
 timeseriesClu = sum(timeseriesClu,2)/S(2);
-
+%{
 figure()
 subplot(2,1,1)
 plot(timeseriesHPF,'r',LineWidth=1.5)
@@ -227,6 +279,7 @@ plot(timeseriesClu,'b',LineWidth=1.5)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('Cluster average in ACC\_L')
+%}
 
 %% Combination
 
@@ -240,11 +293,13 @@ timeseries = data(:,1);
 time = 1:2:2*T;
 
 % Plot a combined time-series
+%{
 figure()
 plot(time,timeseries,'r',LineWidth=1.5)
 xlabel('Time (s)')
 ylabel('BOLD')
 title('Combined data in ACC\_L')
+%}
 
 %% Compare Combination with others
 
@@ -270,7 +325,7 @@ timeseriesClu = sum(dataClu,2)/S(2);
 timeseriesCom = dataCom(:,1);
 
 time = 1:2:2*T;
-
+%{
 figure()
 subplot(5,1,1)
 plot(time,timeseriesRaw,'r',LineWidth=1.5)
@@ -298,3 +353,47 @@ xlabel('Time (s)')
 ylabel('BOLD')
 title('Final ACC\_L')
 sgtitle('Progress in each step')
+%}
+
+fig = figure;
+subplot(4,1,1)
+plot(time,timeseriesRaw,'black',LineWidth=1.5)
+xticklabels('')
+xlim([0,512])
+ylim([1000,1060])
+xL=xlim;
+yL=ylim;
+text(0.999*xL(2),0.999*yL(2),'Raw BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+subplot(4,1,2)
+plot(time,timeseriesNorm,'g',LineWidth=1.5)
+xticklabels('')
+xlim([0,512])
+ylim([-15,20])
+xL=xlim;
+yL=ylim;
+text(0.99*xL(2),0.99*yL(2),'Normalized BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+subplot(4,1,3)
+plot(time,timeseriesNorm,'b',LineWidth=1.5)
+xticklabels('')
+xlim([0,512])
+ylim([-15,20])
+xL=xlim;
+yL=ylim;
+text(0.99*xL(2),0.99*yL(2),'High Pass Filtered','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+subplot(4,1,4)
+plot(time,timeseriesCom,'r',LineWidth=1.5)
+xlim([0,512])
+ylim([-30,40])
+xlabel('Time (s)','FontSize',15);
+xL=xlim;
+yL=ylim;
+text(0.99*xL(2),0.99*yL(2),'Clustered and Combined','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+han=axes(fig,'visible','off'); 
+han.Title.Visible='on';
+han.XLabel.Visible='on';
+han.YLabel.Visible='on';
+ylabel(han,'ACC\_L', 'FontSize', 15);
+fontsize(fig,15,"points")
+%sgtitle('ACC\_L')
+tightfig
+print('progress','-dpdf','-bestfit')
