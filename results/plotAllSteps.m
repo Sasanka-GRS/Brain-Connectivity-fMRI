@@ -123,7 +123,7 @@ end
 hold off
 xticklabels('')
 xlim([0,512])
-ylim([0,2150])
+ylim([0,2000])
 xL=xlim;
 yL=ylim;
 text(0.99*xL(2),0.99*yL(2),'Raw BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
