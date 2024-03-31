@@ -135,11 +135,11 @@ for i = 1:L
 end
 hold off
 xlim([0,512])
-ylim([-120,150])
+ylim([-120,200])
 xlabel('Time (s)','FontSize',15);
 xL=xlim;
 yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'Normalized BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+text(0.99*xL(2),0.99*yL(2),'High Pass Filtered','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
 han=axes(fig,'visible','off'); 
 han.Title.Visible='on';
 han.XLabel.Visible='on';
@@ -356,7 +356,7 @@ sgtitle('Progress in each step')
 %}
 
 fig = figure;
-subplot(4,1,1)
+subplot(3,1,1)
 plot(time,timeseriesRaw,'black',LineWidth=1.5)
 xticklabels('')
 xlim([0,512])
@@ -364,15 +364,15 @@ ylim([1000,1060])
 xL=xlim;
 yL=ylim;
 text(0.999*xL(2),0.999*yL(2),'Raw BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
-subplot(4,1,2)
-plot(time,timeseriesNorm,'g',LineWidth=1.5)
-xticklabels('')
-xlim([0,512])
-ylim([-15,20])
-xL=xlim;
-yL=ylim;
-text(0.99*xL(2),0.99*yL(2),'Normalized BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
-subplot(4,1,3)
+%subplot(4,1,2)
+%plot(time,timeseriesNorm,'g',LineWidth=1.5)
+%xticklabels('')
+%xlim([0,512])
+%ylim([-15,20])
+%xL=xlim;
+%yL=ylim;
+%text(0.99*xL(2),0.99*yL(2),'Normalized BOLD','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
+subplot(3,1,2)
 plot(time,timeseriesNorm,'b',LineWidth=1.5)
 xticklabels('')
 xlim([0,512])
@@ -380,7 +380,7 @@ ylim([-15,20])
 xL=xlim;
 yL=ylim;
 text(0.99*xL(2),0.99*yL(2),'High Pass Filtered','HorizontalAlignment','right','VerticalAlignment','top','FontSize',12,'FontWeight','bold')
-subplot(4,1,4)
+subplot(3,1,3)
 plot(time,timeseriesCom,'r',LineWidth=1.5)
 xlim([0,512])
 ylim([-30,40])
